@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Penguin Records</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="icon-site" type="imagex/png" href="src/img/logo3-_2_.ico">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- Carrossel Swift-->
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://swiffyslider.com/configuration/?slider-item-show=slider-item-show4&slider-item-reveal=slider-item-reveal&slider-nav-style=slider-nav-arrow-nav-dark=slider-nav-dark&slider-nav-sm=slider-nav-sm&slider-nav-arrows=slider-nav-outside-expand&slider-nav-visible=slider-nav-visible&slider-nav-noloop=slider-nav-noloop&slider-nav-autopause=slider-nav-autopause&slider-indicators-style=slider-indicators-round&slider-indicators-dark=slider-indicators-dark&slider-indicators-outside=slider-indicators-outside&slider-nav-mousedrag=slider-nav-mousedrag&preview-style=preview-images">
+</head>
+
+<body>  
+  <div class="header">
+  <!--<img class="img-header" src="src/img/logofinal2.png" alt="Penguin Records">-->
+    <div class="logo"><h1>Penguin Records</h1></div>
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Pesquisar artistas, album e mais...">
+    </div>
+    <nav class="nav-home">
+      <li>
+        <div class="custom-select">
+          <div class="select-display">Discos<ion-icon name="caret-down" class="setaprabaixo"></ion-icon></div>
+          <div id="markdown-content" class="hidden">
+            <div class="select-items">
+              <div class="genres-header">Genêros</div>
+                <div class="column-container">
+                  <div class="column">
+                  <div class="item" data-url="#">Blues</div>
+                  <div class="item" data-url="#">Funk</div>
+                  <div class="item" data-url="#">Jazz</div>
+                  <div class="item" data-url="#">Rock</div>
+                  <div class="item" data-url="#">Soundtrack</div>
+                  <div class="item" data-url="#">New Metal</div>
+                </div>
+              </div>
+              <div class="column">
+                  <div class="item" data-url="#">MPB</div>
+                  <div class="item" data-url="#">Metal</div>
+                  <div class="item" data-url="#">Pop</div>
+                  <div class="item" data-url="#">Reggae</div>
+                  <div class="item" data-url="#">Forró</div>
+                  <div class="item" data-url="#">Soul</div>
+              </div>
+              <div class="column">
+                <div class="item" data-url="#">Metal</div>
+                <div class="item" data-url="#">Samba</div>
+                <div class="item" data-url="#">Soul</div>
+                <div class="item" data-url="#">Rap</div>
+                <div class="item" data-url="#">Country</div>
+                <div class="item" data-url="#">Kpop</div>
+              </div>
+            <select class="select-button">
+              <option value="blues">Blues</option>
+              <option value="funk">Funk</option>
+              <option value="jazz">Jazz</option>
+              <option value="mpb">MPB</option>
+              <option value="pop">Pop</option>
+              <option value="rock">Rock</option>
+              <option value="metal">Metal</option>
+              <option value="reggae">Reggae</option>
+              <option value="samba">Samba</option>
+              <option value="soul">Soul</option>
+              <option value="rap">Rap</option>
+              <option value="forro">Forró</option>
+            </select>
+      </div>
+      </li>
+      <button class="button-nav">Novidades</button>
+      <button class="button-nav">Promoções</button>
+        <li><a href="#" id="carrinho_site"><ion-icon name="cart"></ion-icon></li></a>
+        <li><a href="login.html" id="link_login">Login</a></li>
+        <li><a href="#"><button class="button-cadastro">Cadastro</button></a></li>
+    </nav>
+</nav>
+</div>
+
+<div class="banner-header">
+  <img class="img-banner" src="src/img/banner.png" alt="Banner">
+</div>
+
+<div class="banner-mid">
+    <img class="img-banner-mid" src="src/img/banner-mid.png" alt="Banner Mid">
+    <div class="banner-mid-text">
+      <a href="https://eddielock.co.uk/collections/jamie-reid"><h2>God Save The Queen: Discover about the artist behind this album cover</h2></a>
+      <p>Jamie Reid's artwork to the Sex Pistols 'Never Mind The Bollocks' sleeve was the No.1 most voted for album cover of all time. He was the graphic artist and back-bone to Malcolm McLaren & Vivienne Westwood's Seditionaries label and punk gods, The Sex Pistols (...)</p> 
+</div>
+
+<div class="containers-mid">
+<div class="mid">
+  <div class="mid-text">
+  <img class="text-image" src="src/img/text-mid.png" alt="Best selling">
+  </div>
+  <div class="swiffy-slider slider-item-show4 slider-item-reveal slider-nav-arrow slider-nav-dark slider-nav-sm slider-nav-outside-expand slider-nav-visible slider-nav-noloop slider-nav-autopause slider-indicators-round slider-indicators-dark slider-indicators-outside">
+    <ul class="slider-container">
+        <li class="">
+            <div id="slide1">
+              <img src="src/img/abba.jpg" class="album-image" alt="Abba">
+              <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+              </div>
+              <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+              </div>
+            </div>
+        </li>
+              <li class="">
+                  <div id="slide2">
+                    <img src="src/img/gil.jpg" class="album-image" alt="Gil Scott">
+                    <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+                  <div class="album-buttons">
+                  <button class="shop-button">Shop</button>
+                  <button class="want-button">Want</button>
+                  </div>
+              </li>
+                        <li class="">
+                          <div id="slide3">
+                            <img src="src/img/happyfeet.jpg" class="album-image" alt="Happy Feet">
+                            <div class="album-info">
+                        <h3>Album Title</h3>
+                        <span class="artist-name">Artist Name</span>
+                      <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                          </div>
+                        </li>
+                                  <li class="">
+                                    <div id="slide4">
+                                      <img src="src/img/jorgeben.jpg" class="album-image" alt="Jorge Ben">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                    </div>
+                                  </li>
+                                        <li class="slide-visible">
+                                            <div id="slide5">
+                                              <img src="src/img/meatloaf.jpg" class="album-image" alt="Meat Loaf">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                            </div>
+                                          </li>
+                                                <li class="">
+                                                  <div id="slide6">
+                                                    <img src="src/img/bobdylan.jpg" class="album-image" alt="Bob Dylan">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                                  </div>
+                                                 </li>
+            <li class="">
+            <div id="slide7">
+            <img src="src/img/nickcave.jpg" class="album-image" alt="Nick Cave">
+            <div class="album-info">
+            <h3>Album Title</h3>
+            <span class="artist-name">Artist Name</span>
+            <p>Year</p>
+            <p>Genre</p>
+            <p>2 x Vinyl, LP, Album, Club Edition...</p>
+            <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+            <button class="shop-button">Shop</button>
+            <button class="want-button">Want</button>
+            </div>
+            </div>
+            </li>
+                                                          <li class="">
+                                                              <div id="slide8">
+                                                                <img src="src/img/steviewonder.jpg" class="album-image" alt="Stevie Wonder">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                                              </div>
+                                                            </li>
+                                                                <li class="">
+                                                                  <div id="slide9">
+                                                                    <img src="src/img/osmutantes.jpg" class="album-image" alt="Os Mutantes">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <p>Artist Name</p>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+                                                                  </div>
+                                                                </li>
+    </ul> 
+
+    <!--<button type="button" class="slider-nav"></button>
+    <button type="button" class="slider-nav slider-nav-next"></button>-->
+    <div class="slider-nav"></div>
+    <div class="slider-nav slider-nav-next"></div>
+
+          <ul class="slider-indicators">
+            <li class="active"></li>
+            <li class=""></li>
+            <li class=""></li>
+            <li class=""></li>
+          </ul>
+  </div>
+
+</div>
+
+<div class="mid-content">
+<div class="mid-content-text">
+  <img class="text-image" src="src/img/contentshow.png" alt="Best wanted">
+  </div>
+  <div class="swiffy-slider slider-item-show4 slider-item-reveal slider-nav-arrow slider-nav-dark slider-nav-sm slider-nav-outside-expand slider-nav-visible slider-nav-noloop slider-nav-autopause slider-indicators-round slider-indicators-dark slider-indicators-outside">
+    <ul class="slider-container">
+        <li class="">
+            <div id="slide10">
+              <img src="src/img/oasis.jpg" class="album-image" alt="Oasis">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+            </div>
+        </li>
+              <li class="">
+                  <div id="slide11">
+                    <img src="src/img/atribe.jpg" class="album-image" alt="A Tribe">
+                    <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+                  </div>
+                </li>
+                        <li class="">
+                          <div id="slide12">
+                            <img src="src/img/cachorro.jpg" class="album-image" alt="Cachorro">
+                            <div class="album-info">
+                        <h3>Album Title</h3>
+                        <span class="artist-name">Artist Name</span>
+                      <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                          </div>
+                        </li>
+                                  <li class="">
+                                    <div id="slide13">
+                                      <img src="src/img/coracao.jpg" class="album-image" alt="Coracao">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                    </div>
+                                  </li>
+                                        <li class="slide-visible">
+                                            <div id="slide14">
+                                              <img src="src/img/hammerfal.jpg" class="album-image" alt="Hammer">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                            </div>
+                                          </li>
+                                                <li class="">
+                                                  <div id="slide15">
+                                                    <img src="src/img/sabina.jpg" class="album-image" alt="Sabrina">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                                  </div>
+                                                 </li>
+                                                    <li class="">
+                                                      <div id="slide16">
+                                                        <img src="src/img/brat.jpg" class="album-image" alt="Brat">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                                      </div>
+                                                    </li>
+                                                          <li class="">
+                                                              <div id="slide17">
+                                                                <img src="src/img/chapel.jpg" class="album-image" alt="Chapel">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <span class="artist-name">Artist Name</span>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+
+                                                              </div>
+                                                            </li>
+                                                                <li class="">
+                                                                  <div id="slide18">
+                                                                    <img src="src/img/mada.jpg" class="album-image" alt="Madaglena">
+            <div class="album-info">
+              <h3>Album Title</h3>
+              <p>Artist Name</p>
+              <p>Year</p>
+              <p>Genre</p>
+              <p>2 x Vinyl, LP, Album, Club Edition...</p>
+              <p>26 copies from $44.00</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+                                                                  </div>
+                                                                </li>
+    </ul> 
+
+    <!--<button type="button" class="slider-nav"></button>
+    <button type="button" class="slider-nav slider-nav-next"></button>-->
+  
+    <div class="slider-nav"></div>
+    <div class="slider-nav slider-nav-next"></div>
+
+          <ul class="slider-indicators">
+            <li class="active"></li>
+            <li class=""></li>
+            <li class=""></li>
+            <li class=""></li>
+          </ul>
+  </div>
+</div>
+</div>
+<div class="subscribe-container">
+  <div class="subscribe-text">
+    <h4>Subscribe to keep up to date with the latest in music discovery, record collecting trends, and exclusive Discogs updates.</h4>
+    <div class="subscribe-form">
+      <input type="text" id="email" placeholder="you@example.com">
+      <button id="subscribe-button">Subscribe</button>
+    <h5>By entering my email address, I consent to receive communications about music, promotions, and Discogs. Unsubscribe at any time using the “unsubscribe” link in the emails. Learn more about your rights and how Discogs handles your personal data by reviewing the Privacy Policy.</h5>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-content">
+    <ul>
+    <li><span id="alt-text">Penguin Records</span></li>
+    <li><a href="#">Sobre nós</a></li>
+    <li><a href="#">Nosso Jornal</a></li>
+    <li><a href="#">Trabalhe Conosco</a></li>
+    </ul>
+    <ul>
+    <li><span id="alt-text">Siga nos</span></li>
+    <li><a href="#">Facebook</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">Twitter</a></li>
+    <li><a href="#">Tiktok</a></li>
+    </ul>
+    <ul>
+    <li><span id="alt-text">Venha nos visitar</span></li>
+    <li><a href="#">Endereço</a></li>
+    <li><a href="#">Contato</a></li>
+    </ul>
+    <ul>
+    <li><span id="alt-text">Em qualquer lugar</span></li>
+    <li><a href="#"><img class="google-play-badge" src="src/img/google-play-badge.png"></a></li>
+    <li><a href="#"><img class="app-store-badge" src="src/img/app-store-badge.png"></a></li>
+    </ul>
+  </div> 
+</class>
+
+<nav id="nav_footer">
+    <div class="nav_footer">
+        <ul>
+            <li><span id="logo-text">Penguin Records</span></li>
+            <li><span id="logo-trademark">© 2024 Penguin Records®</span></li>
+            <li><button id="cookie-settings"><a href="#">Cookie Settings</a></button></li>
+            <li><a href="#">Política de Cookies</a></li>
+            <li><a href="#">Termos de Serviço</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+
+            <span id="language_container">
+                <label id="i18n_link" for="i18n_select" href="#select-language" data-code="pt_BR" data-name="Português (Brasil)">
+                <ion-icon name="earth"></ion-icon>
+                <select id="i18n_select">
+                <option id="language_en_field" name="language_code" class="language" value="en" lang="en"> English </option>
+                <option id="language_es_field" name="language_code" class="language" value="es" lang="es"> Español </option>
+                <option id="language_fr_field" name="language_code" class="language" value="fr" lang="fr"> Français </option>
+                <option id="language_it_field" name="language_code" class="language" value="it" lang="it"> Italiano </option>
+                <option id="language_pt_BR_field" name="language_code" class="language" value="pt_BR" lang="pt-BR" selected=""> Português (Brasil) </option>
+                </select>
+                </label>
+            </span>
+        </ul>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+<script src="java.js"></script>
+
+</body>
+</html>

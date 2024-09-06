@@ -1,0 +1,327 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #20201F;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+/*.img-header{
+    width: 60px;
+    margin: 0;
+    align-items: center;
+    box-sizing: border-box;
+  }*/
+
+  h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    font-family: "anton", sans-serif;
+    color: #333333;
+  }
+
+  h2{
+    font-size: 23px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #333333;
+  }
+
+  p {
+    margin-bottom: 25px;
+    color: black;
+    font-size: 14px;
+  }
+  
+  .input-group {
+    position: relative;
+    margin-bottom: 15px;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: -10px;
+    left: 4%;
+    font-size: 12px; /* Tamanho do texto quando o placeholder está no seu estado padrão */
+    color: #175CD3; /* Cor do texto do label */
+    background: #fff; /* Fundo branco para evitar sobreposição com o campo de entrada */
+    padding: 0 4px; /* Espaço entre o texto e a borda do campo */
+    visibility: hidden;
+    transition: opacity 0.2s ease, top 0.2s ease, font-size 0.2s ease; /* Suaviza a transição do texto */
+    pointer-events: none; /* Evita que o texto do label interfira na interação com o campo de entrada */
+  }
+
+  .input-label-password{
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    font-size: 12px; /* Tamanho do texto quando o placeholder está no seu estado padrão */
+    color: #175CD3; /* Cor do texto do label */
+    background: #fff; /* Fundo branco para evitar sobreposição com o campo de entrada */
+    padding: 0 4px; /* Espaço entre o texto e a borda do campo */
+    visibility: hidden;
+    transition: opacity 0.2s ease, top 0.2s ease, font-size 0.2s ease; /* Suaviza a transição do texto */
+    pointer-events: none; /* Evita que o texto do label interfira na interação com o campo de entrada */
+  }
+  
+  .input-group input:focus + label,
+  .input-group input:not(:placeholder-shown) + label {
+        visibility: visible;
+        top: -8px;
+        left: 3;
+        font-size: 14px;
+        color: #175CD3;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 20px;
+    font-size: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input::placeholder {
+    font-size: 16px;
+    color: #6C6B68; /* Cor padrão do placeholder */
+  }
+
+  .input-group input:focus {
+    border: 2px solid #175CD3; /* Cor da borda ao focar (altere para a cor desejada) */
+    outline: none; /* Remove o contorno padrão do navegador */
+  }
+
+  input::placeholder {
+    font-size: 16px; /* Altere o valor para o tamanho de fonte desejado */
+    color: #6C6B68; /* Você também pode alterar a cor do placeholder, se desejar */
+  }
+
+  .input-with-visible-placeholder::placeholder {
+    color: #175CD3; /* Cor da borda ou qualquer cor que desejar */
+}
+
+  .input-group input:focus::placeholder {
+    color: transparent;
+}
+
+  .password-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .password-wrapper input[type="password"]:focus,
+  .password-wrapper input[type="password"].focused {
+    border: 2px solid #175CD3; /* Cor da borda ao focar (altere para a cor desejada) */
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+.password-visible {
+    border: 2px solid #175CD3; /* Cor da borda de foco */
+}
+
+.password-wrapper input[type="password"].password-visible {
+    border: 2px solid #175CD3; /* Cor da borda quando a senha está visível */
+}
+.password-wrapper input.password-visible {
+    border: 2px solid #175CD3; /* Cor da borda quando a senha está visível */
+  }
+
+.password-visible::placeholder {
+        color: #175CD3; /* Mesma cor da borda */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0.5%;
+    top: 50%;
+    height: 94%;
+    bottom:auto;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 3px;
+}
+
+.toggle-password:active {
+    background-color: #DCE7F8; /* Cor de fundo quando o botão é clicado (ou pressionado) */
+  }
+
+.toggle-password:hover {
+    background-color: #eaeaea;
+}
+
+  .toggle-password ion-icon {
+    font-size: 20px; /* Tamanho do ícone */
+    color: #747370; /* Cor do ícone */
+    padding-left: 10px;
+  }
+
+  .toggle-password:hover ion-icon {
+    color: #747370;
+  }
+  
+  .btn-primary {
+    width: 320px;
+    height: 50px;
+    padding: 18px;
+    background-color: #2F2F2D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 5px;
+
+  }
+  
+  .login-link {
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding-right: 115px;
+  }
+  
+  .login-link a {
+    color: #175CD3;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-left: 5px;
+  }
+
+  .a-password a {
+    color: #175CD3;
+    text-decoration: underline;
+    font-weight: 500;
+    padding-right: 195px;
+    font-size: 15px;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .divider::before {
+    margin-right: 10px;
+  }
+  
+  .divider::after {
+    margin-left: 10px;
+  }
+  
+  .divider span {
+    font-size: 13px;
+    color: black;
+  }
+
+  hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  .social-login {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .social-login button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    width: 320px;
+    height: 50px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .social-login button:hover {
+    background-color: #eaeaea;
+  }
+
+  .social-login button{
+    padding: 15px;
+  }
+  
+  .btn-google {
+    color: black;
+  }
+  
+  .btn-apple {
+    color: black;
+  }
+  
+  .btn-facebook {
+    color: black;
+  } 
+
+  ion-icon {
+    font-size: 22px; /* Aumenta o tamanho do ícone */
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+    vertical-align: middle;
+  }
+  
+  /* Ajustando ícones de redes sociais individualmente, se necessário */
+  .icon-google {
+    color: #000;
+  }
+  
+  .icon-apple {
+    color: #000;
+  }
+  
+  .icon-facebook {
+    color: #000;
+  }

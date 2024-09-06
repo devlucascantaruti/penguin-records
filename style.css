@@ -1,0 +1,864 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #31312F;
+    list-style-type: none;
+}
+
+.header .logo{
+    flex:1;
+}
+
+.header .search-container{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.header .nav-home{
+    display: flex;
+    align-items: center;
+    flex: 3;
+    justify-content: center;
+    list-style: none;
+}
+
+.header .nav-home > * {
+    margin: 0 10px; /* Espaçamento entre os itens */
+}
+
+.header .button-nav,
+.header .button-cadastro {
+  flex:6;
+  text-align: center;
+}
+
+.header #carrinho_site ion-icon,
+.header #link_login ion-icon {
+  vertical-align: middle;
+  flex: 5;
+}
+
+.header .select-display{
+    flex:5;
+}
+
+/* Estilo base do botão de exibição do dropdown */
+.select-display {
+    background-color: #31312F; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-family: Arial, Helvetica, sans-serif; /* Fonte */
+    border: none; /* Remove a borda */
+    outline: none; /* Remove o contorno */
+    font-size: 17px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de pointer */
+    padding: 5px 10px; /* Padding interno */
+    display: flex; /* Alinha o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    margin-left: -40px; /* Ajuste a margem conforme necessário */
+}
+
+/* Estilo quando o botão está em hover */
+.select-display:hover {
+    background-color: black; /* Cor de fundo em hover */
+    color: white; /* Cor do texto em hover */
+}
+
+/* Estilo quando o botão está ativo (clicado) */
+.select-display.active {
+    background-color: black; /* Cor de fundo ativa */
+    color: white; /* Cor do texto ativa */
+}
+
+/* Estilo do ícone dentro do botão */
+.select-display.active::after, /* Quando o botão estiver ativo */
+.select-display:hover::after, /* Quando o botão estiver em hover */
+.setaprabaixo:hover { /* Quando o ícone estiver em hover */
+    color: white; /* Cor do ícone */
+}
+
+/* Estilo quando o botão está ativo e o ícone deve girar */
+.select-display.active .setaprabaixo {
+    transform: rotate(180deg); /* Rotaciona a seta para cima */
+}
+
+/* Estilo do botão personalizado */
+.select-button:hover,
+.select-button:focus {
+    background-color: #31312F; /* Cor de fundo em hover/focus */
+    color: white; /* Cor do texto em hover/focus */
+    outline: none; /* Remove o contorno */
+    border: none; /* Remove a borda */
+}
+
+
+body {
+    margin: 0; /* Remove a margem padrão do corpo */
+    padding: 0; /* Remove o padding padrão do corpo */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    color: white;
+    font-family: "Anton", sans-serif;
+    font-size: 13px;
+    width: 100%;
+    padding-bottom: 0px;
+    margin-left: 360px;
+}
+
+.search-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px; /* Ajusta o tamanho da barra de pesquisa */
+    margin-left: -230px;
+}
+
+#search-bar {
+    width: 330px;
+    height: 40px;
+    border: none;
+    font-size: 17px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px double black;
+}
+
+#search-bar:focus {
+    outline: none;
+    width: 350px;
+    border: #000 1px double;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-shadow: 0 0 0 2px #668CFF;
+    margin-left: 30px;
+}
+
+.nav-home{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    list-style-type: none;
+}
+
+.nav-home, .custom-select{
+    width: 100%;
+    text-align: center;
+}
+
+#link_login, #carrinho_site, .button-cadastro {
+    margin: 0 6px; /* Adiciona margem mínima entre os itens */
+}
+
+
+.button-nav {
+    background-color: #31312F;
+    display: relative;
+    width: 10px;
+    color: white;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden-buttons{
+    display: none;
+}
+
+.search-container{
+  width: 490px;
+  display: block;
+}
+
+.genres-header {
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    grid-column: 2; /* Centraliza na segunda coluna */
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: center; /* Centraliza as colunas horizontalmente */
+    gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.select-items {
+    display: none; /* Oculta o dropdown por padrão */
+    position: absolute; /* Posiciona o dropdown em relação ao elemento pai */
+    background-color: black;
+    border: 1px solid #444; /* Adiciona uma borda sutil ao dropdown */
+    border-radius: 4px; /* Adiciona bordas arredondadas ao dropdown */
+    z-index: 1000; /* Garante que o dropdown fique sobre outros elementos */
+    top: 100%; /* Posiciona o dropdown abaixo do botão */
+    left: 0; /* Alinha o dropdown com o botão */
+}
+
+.select-items .item {
+    padding: 10px 15px; /* Ajusta o padding dos itens do dropdown */
+    color: white;
+    cursor: pointer;
+}
+
+.select-items.show {
+    display: block; /* Mostra o dropdown quando a classe show está presente */
+}
+
+.button-nav:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    display: relative;
+}
+
+a .button-cadastro{
+    text-decoration: none;
+}
+
+li a {
+    text-decoration: none; /* Remove o sublinhado de todos os links dentro da lista */
+}
+
+a .button-cadastro, .button-cadastro {
+    text-decoration: none; /* Garante que o sublinhado seja removido especificamente para o botão */
+}
+
+#carrinho_site {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    text-align: center;
+    display: relative;
+}
+
+#carrinho_site:hover {
+    background-color: black;
+    color: white;
+}
+
+.button-cadastro {
+    background-color: #F5DF2E;
+    color: #000000;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: Helvetica;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#link_login {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#link_login:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: relative;
+}
+
+
+/*.img-header{
+    width: 60px;
+    margin-left: 300px;
+    padding-right: 8px;
+    color: white;
+    align-items: center;
+    box-sizing: border-box;
+}*/
+
+.banner-header{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: -5px;
+}
+
+.banner-mid{
+    position: flex;
+    height: 100%;
+    object-fit: cover;
+    padding-top: -100px;
+}
+
+.img-banner-mid{
+    width: 100%;
+    height: 280px;
+    background-color:#F2F2F2;
+    object-fit: cover;
+}
+
+.banner-mid-text {
+    position: absolute; /* Posicionamento absoluto em relação ao contêiner pai */
+    top: 70%;
+    bottom: 20%;
+    left: 60%;
+    right: 60%;
+    width: 300px;
+    text-align: justify;
+    margin-top: -28px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    line-height: 1.5;
+    transform: translate(-50%, -50%); /* Centraliza o texto */
+    color: white; /* Cor do texto */
+    font-size: 12px; /* Tamanho do texto, ajuste conforme necessário */
+    align-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a, h2{
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    text-align: center;
+    font-size: 15px;
+    text-decoration: none;
+    padding-top: 40px;
+}
+
+a:hover, h2:hover{
+    color: #4DD2FF;
+    text-decoration: underline;
+}
+
+.mid{
+    padding-top: 70px;
+    padding-left: 5px;
+    padding-bottom: 90px;
+}
+
+.mid-text{
+ position: absolute;
+ top: 40%;
+ left: -25%;
+ padding-top: 0px;
+ text-align: center;
+ box-sizing: border-box;
+}
+
+.mid-content{
+    padding-left: 5px;
+    padding-bottom: 0px;
+}
+
+.text-image{
+    padding-top: 1px;
+}
+
+.mid-content-text{
+    position: absolute;
+    top: 110%;
+    left: -25%;
+    padding-top: 0px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.containers-mid{
+    display: relative;
+    justify-content:center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.mid {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.mid-content{
+    display: flex;
+    justify-content: center;
+    margin: 120px 0;
+    width: 100%;
+}
+
+.album-info {
+    margin: 10px 0;
+    text-align: center; /* Centraliza o texto */
+}
+
+.album-info h3 {
+    font-size: 16px;
+    font-weight: 550;
+    margin: 1px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.album-info p {
+    font-size: 12px;
+    margin: 2px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.artist-name{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.album-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .album-image {
+        width: 300px;  /* Reduz a largura para telas menores */
+    }
+}
+
+.shop-button,
+.want-button {
+    padding: 5px 24px;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    flex: 1;
+    margin: 0 5px; /* Adiciona espaçamento entre os botões */
+}
+
+.shop-button:hover,
+.want-button:hover {
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+}
+
+
+.album-image {
+    width: 250px;  /* Largura fixa */
+    height: 250px; /* Altura fixa */
+    object-fit: cover; /* Ajusta a imagem para preencher o container */
+    margin-bottom: -10px;
+    position: relative;
+    align-items: center;
+  }
+
+
+.select-button {
+    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
+    -moz-appearance: none; /* Para Firefox */
+    appearance: none; /* Para outros navegadores */
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: none;
+}
+
+.swiffy-slider {
+    width: 100%;
+    max-width: 1160px; /* Define uma largura máxima se necessário */
+    height: 100%;
+    margin: 0 100px; /* Centraliza o slider */
+    position: flex;
+    align-items: center;
+}
+
+#slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #slide7, #slide8, #slide9, #slide10, #slide11, #slide12, #slide13, #slide14, #slide15, #slide16, #slide17, #slide18{
+    width: 250px;
+    min-height: 100%;
+    object-fit: cover;
+    background-color: white;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), 
+                var(--tw-ring-shadow, 0 0 transparent), 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.swiffy-slider .slider-container li:last-child {
+    margin-right: 0;
+}
+
+.swiper-navigation-container {
+    display: center;
+    justify-content: center;
+    margin-top: 30px; /* Espaçamento adicional se necessário */
+}
+
+.swiper-navigation-container {
+    display: relative;
+    justify-content: center;
+    margin-top: 60px; /* Espaçamento adicional se necessário */
+}
+
+.slider-nav, .slider-nav-next{
+    display: flex;
+    margin-top: 450px;
+}
+
+/* Se houver um container de navegação, ajuste conforme necessário 
+.swiffy-navigation-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px; /* Espaçamento adicional se necessário }*/
+
+.album-buttons {
+    text-align: center;
+    /* Centraliza os botões */
+}
+
+.shop-button, .want-button {
+    margin: 5px;
+    /* Espaçamento entre os botões */
+}
+
+
+.subscribe-container{
+    display: relative;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: black;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 700px;
+}
+
+.subscribe-text{
+    width: 1200px;
+    margin-left: -100px;
+}
+
+.subscribe-form{
+    display: relative;
+    justify-content: center;
+    margin-top: -200px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.subscribe-form input[type="email"]:focus {
+    border: 2px solid #668CFF; /* Cor da borda quando o input de email está em foco */
+    box-sizing: border-box;
+}
+
+.subscribe-form input {
+    border: none; /* Borda padrão */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+  
+  .subscribe-form input:focus {
+    border: 3px solid #668CFF; /* Cor da borda quando o input está em foco */
+    outline: none; /* Remove o outline padrão do navegador */
+    box-sizing: border-box;
+}
+
+#email{
+
+width: 360px;
+height: 50px;
+margin-bottom: 20px;
+font-size: 16px;
+padding-left: 10px;
+border-radius: 5px;
+
+}
+
+#subscribe-button{
+    position: flex;
+    background-color: #00800B;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 3px;
+    width: 359px;
+    height: 50px;
+    margin-top: -90px;
+}
+
+.subscribe-text, h4{
+    font-size: 23px;
+    line-height: 1.5;
+    margin-right: 500px;
+    padding-top: 10px;
+    padding-left: 230px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: left;
+}
+
+h5{
+    font-size: 10px;
+    padding-left: 6px;
+    width: 300px;
+    text-align: left;
+}
+
+.subscribe-form{
+    margin-left: 1080px;
+}
+
+
+
+.custom-select {
+    position: relative; /* Necessário para o dropdown */
+}
+
+.custom-select:hover .select-items {
+    display: flex; /* Exibe o dropdown ao passar o mouse */
+}
+
+
+.setaprabaixo{
+    font-size: 13px;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+
+#markdown-content.hidden {
+    display: none;
+}
+
+.select-items {
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    border: none;
+    z-index: 99;
+    min-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.select-items.show {
+    display: flex;
+}
+
+.select-items .column {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.select-items .item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.select-items .item:hover {
+    text-decoration: underline;
+    color: #4DD2FF;
+}
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#nav_footer{
+    position: fixed;
+    background-color: icewhite;
+    color: white;
+    text-align: left;
+    margin-left: 250px;
+}
+
+  /* Add a gray background color and some padding to the footer */
+.footer {
+    background-color: #232323;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.footer-content ul{
+    list-style-type: none;
+    line-height: 1.5;
+    padding: 40px 40px 40px 40px;
+    margin: 0 10px;
+}
+
+.footer-content a{
+    text-decoration: none;
+    font-family: 'Helvetica', sans-serif;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-content a:hover{
+    text-decoration: underline;
+    color: #4DD2FF;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Define um espaçamento entre as listas */
+    box-sizing: content-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #CCCCCC;
+    background-color: #232323;
+    text-align: center;
+    list-style: none;
+    padding: 40px 40px 40px 40px;
+}
+
+#alt-text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 3.0;
+}
+
+#nav_footer{
+    background-color: #333333;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+    bottom: 0; /* Alinha ao fundo se for fixed */
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px 2px 2px 2px; /* Espaçamento interno do menu */
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    z-index: 0;
+}
+
+#logo-text{
+    color: white;
+    font-family: "Anton", sans-serif;
+    font-size: 20px;
+}
+
+#logo-trademark{
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+}
+
+#cookie-settings{
+    background-color: #333333;
+    border: 1px solid #f2f2f2;
+    padding: 8px 20px 8px 20px;
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+    border-width: 1px;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+ #nav_footer ul {
+    list-style-type: none;
+    padding: 15px;
+    padding-bottom: 0%;
+    display: float;
+    justify-content: space-around;
+}
+
+#nav_footer ul li {
+    margin: 15px; /* Espaçamento entre os links */
+    display: inline;
+}
+
+#nav_footer ul li a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: white; /* Cor dos links */
+    font-size: 11px;
+}
+
+#nav_footer ul li a:hover {
+    text-decoration: underline;
+    color: #4DD2FF; /* Cor dos links ao passar o mouse */   
+}
+
+.google-play-badge, .app-store-badge {
+    width: 140px;
+    height: 45px;
+    padding-top: 2px;
+}
+
+#i18n_link ion-icon {
+    margin-left: 150px;
+    margin-right: 0px; /* Espaçamento entre o ícone e o texto */
+    font-size: 13px;
+}
+
+#i18n_select{
+    background-color: #333333;
+    border-color: #333333;
+    color:white;
+    padding: 5px;
+    vertical-align: baseline;
+    overflow: visible;
+    display: inline-block;
+}
+
+#i18n_select option{
+    background-color: white;
+    color:rgb(0, 0, 0);
+    padding: 5px;
+    width: 100%;
+    vertical-align: baseline;
+    overflow: visible;
+    display: inline-block;
+}

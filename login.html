@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-login.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+        <!--<img class="img-header" src="src/img/logofinal2.png" alt="Penguin Records">-->
+        <h1>Pinguin Records</h1>
+        <h2>Welcome</h2>
+        <p>Sign up to Pinguin to continue</p>
+        <form>
+            <div class="input-group">
+                <input type="text" id="username" required placeholder="Username*">
+                <label for="username" class="input-label">Username*</label>
+            </div>
+        <div class="input-group">
+            <div class="password-wrapper">
+                <input type="password" id="password" required placeholder="Password*">
+                <label for="password" class="input-label-password">Password*</label>
+                <button type="button" class="toggle-password">
+                    <ion-icon name="eye-outline" class="eye-icon"></ion-icon>
+                </button>
+            </div>
+        </div>
+        <p class="a-password"><a href="#">Forgot Password?</a></p>
+        <button type="submit" class="btn-primary">Continue</button>
+      </form>
+      <p class="login-link">Already have an account? <a href="signup.html">Log in</a></p>
+      <div class="divider">
+        <span>OR</span>
+      </div>
+        <div class="social-login">
+        <button class="btn-google"><ion-icon name="logo-google" class="icon-google"></ion-icon>Continue with Google</button>
+        <button class="btn-apple"><ion-icon name="logo-apple" class="icon-apple"></ion-icon>Continue with Apple</button>
+        <button class="btn-facebook"><ion-icon name="logo-facebook" class="icon-facebook"></ion-icon>Continue with Facebook</button>
+        </div>
+    </div>
+  </div>
+
+  <script src="java-login.js"></script>
+
+</body>
+</html>
