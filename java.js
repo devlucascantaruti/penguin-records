@@ -59,22 +59,35 @@ searchBar.addEventListener('blur', function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-
   let count = 0;
-  const shopButton = document.querySelector(".shop-button");
+  const shopButtons = document.querySelectorAll(".shop-button"); // Seleciona todos os botões
   const ellipseCart = document.getElementById("ellipse_cart");
   const cartCount = document.getElementById("cart_count");
 
-  shopButton.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (count === 0) {
-      ellipseCart.style.display = "inline";
-      cartCount.style.display = "flex";
-    }
-    count++;
-    cartCount.textContent = count;
+  shopButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (count === 0) {
+        ellipseCart.style.display = "inline";
+        cartCount.style.display = "flex";
+      }
+      count++;
+      cartCount.textContent = count;
+    });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const wantButtons = document.querySelectorAll(".want-button"); // Seleciona todos os botões com a classe want-button
+
+  wantButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault(); // Previne a ação padrão do botão
+      window.location.href = "login.html"; // Substitua pelo URL da página para onde deseja redirecionar
+    });
+  });
+});
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
