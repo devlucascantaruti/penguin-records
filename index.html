@@ -11,9 +11,6 @@
   <link rel="icon-site" type="imagex/png" href="src/img/logo3-_2_.ico">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <!-- Carrossel Swift-->
-  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
-  <link href="https://swiffyslider.com/configuration/?slider-item-show=slider-item-show4&slider-item-reveal=slider-item-reveal&slider-nav-style=slider-nav-arrow-nav-dark=slider-nav-dark&slider-nav-sm=slider-nav-sm&slider-nav-arrows=slider-nav-outside-expand&slider-nav-visible=slider-nav-visible&slider-nav-noloop=slider-nav-noloop&slider-nav-autopause=slider-nav-autopause&slider-indicators-style=slider-indicators-round&slider-indicators-dark=slider-indicators-dark&slider-indicators-outside=slider-indicators-outside&slider-nav-mousedrag=slider-nav-mousedrag&preview-style=preview-images">
 </head>
 
 <body>  
@@ -74,7 +71,7 @@
       </li>
       <button class="button-nav">Novidades</button>
       <button class="button-nav">Promoções</button>
-        <li><a href="#" id="carrinho_site"><ion-icon name="cart"></ion-icon></li></a>
+        <li><a href="#" id="carrinho_site"><ion-icon name="cart"></ion-icon></li></a><ion-icon id="ellipse_cart" name="ellipse"></ion-icon><span id="cart_count">0</span>
         <li><a href="login.html" id="link_login">Login</a></li>
         <li><a href="#"><button class="button-cadastro">Cadastro</button></a></li>
     </nav>
@@ -92,189 +89,15 @@
       <p>Jamie Reid's artwork to the Sex Pistols 'Never Mind The Bollocks' sleeve was the No.1 most voted for album cover of all time. He was the graphic artist and back-bone to Malcolm McLaren & Vivienne Westwood's Seditionaries label and punk gods, The Sex Pistols (...)</p> 
 </div>
 
-<div class="containers-mid">
-<div class="mid">
-  <div class="mid-text">
-  <img class="text-image" src="src/img/text-mid.png" alt="Best selling">
-  </div>
-  <div class="swiffy-slider slider-item-show4 slider-item-reveal slider-nav-arrow slider-nav-dark slider-nav-sm slider-nav-outside-expand slider-nav-visible slider-nav-noloop slider-nav-autopause slider-indicators-round slider-indicators-dark slider-indicators-outside">
-    <ul class="slider-container">
-        <li class="">
-            <div id="slide1">
-              <img src="src/img/abba.jpg" class="album-image" alt="Abba">
-              <div class="album-info">
-              <h3>Album Title</h3>
-              <span class="artist-name">Artist Name
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-              </div>
-              <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-              </div>
-            </div>
-        </li>
-              <li class="">
-                  <div id="slide2">
-                    <img src="src/img/gil.jpg" class="album-image" alt="Gil Scott">
-                    <div class="album-info">
-              <h3>Album Title</h3>
-              <span class="artist-name">Artist Name</span>
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-                  <div class="album-buttons">
-                  <button class="shop-button">Shop</button>
-                  <button class="want-button">Want</button>
-                  </div>
-              </li>
-                        <li class="">
-                          <div id="slide3">
-                            <img src="src/img/happyfeet.jpg" class="album-image" alt="Happy Feet">
-                            <div class="album-info">
-                        <h3>Album Title</h3>
-                        <span class="artist-name">Artist Name</span>
-                      <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-
-                          </div>
-                        </li>
-                                  <li class="">
-                                    <div id="slide4">
-                                      <img src="src/img/jorgeben.jpg" class="album-image" alt="Jorge Ben">
-            <div class="album-info">
-              <h3>Album Title</h3>
-              <span class="artist-name">Artist Name</span>
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-
-                                    </div>
-                                  </li>
-                                        <li class="slide-visible">
-                                            <div id="slide5">
-                                              <img src="src/img/meatloaf.jpg" class="album-image" alt="Meat Loaf">
-            <div class="album-info">
-              <h3>Album Title</h3>
-              <span class="artist-name">Artist Name</span>
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-
-                                            </div>
-                                          </li>
-                                                <li class="">
-                                                  <div id="slide6">
-                                                    <img src="src/img/bobdylan.jpg" class="album-image" alt="Bob Dylan">
-            <div class="album-info">
-              <h3>Album Title</h3>
-              <span class="artist-name">Artist Name</span>
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-
-                                                  </div>
-                                                 </li>
-            <li class="">
-            <div id="slide7">
-            <img src="src/img/nickcave.jpg" class="album-image" alt="Nick Cave">
-            <div class="album-info">
-            <h3>Album Title</h3>
-            <span class="artist-name">Artist Name</span>
-            <p>Year</p>
-            <p>Genre</p>
-            <p>2 x Vinyl, LP, Album, Club Edition...</p>
-            <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-            <button class="shop-button">Shop</button>
-            <button class="want-button">Want</button>
-            </div>
-            </div>
-            </li>
-                                                          <li class="">
-                                                              <div id="slide8">
-                                                                <img src="src/img/steviewonder.jpg" class="album-image" alt="Stevie Wonder">
-            <div class="album-info">
-              <h3>Album Title</h3>
-              <span class="artist-name">Artist Name</span>
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-
-                                                              </div>
-                                                            </li>
-                                                                <li class="">
-                                                                  <div id="slide9">
-                                                                    <img src="src/img/osmutantes.jpg" class="album-image" alt="Os Mutantes">
-            <div class="album-info">
-              <h3>Album Title</h3>
-              <p>Artist Name</p>
-              <p>Year</p>
-              <p>Genre</p>
-              <p>2 x Vinyl, LP, Album, Club Edition...</p>
-              <p>26 copies from $44.00</p>
-            </div>
-            <div class="album-buttons">
-              <button class="shop-button">Shop</button>
-              <button class="want-button">Want</button>
-                                                                  </div>
-                                                                </li>
-    </ul> 
-
-    <!--<button type="button" class="slider-nav"></button>
-    <button type="button" class="slider-nav slider-nav-next"></button>-->
-    <div class="slider-nav"></div>
-    <div class="slider-nav slider-nav-next"></div>
-
-          <ul class="slider-indicators">
-            <li class="active"></li>
-            <li class=""></li>
-            <li class=""></li>
-            <li class=""></li>
-          </ul>
-  </div>
-
-</div>
 
 <div class="mid-content">
 <div class="mid-content-text">
   <img class="text-image" src="src/img/contentshow.png" alt="Best wanted">
   </div>
-  <div class="swiffy-slider slider-item-show4 slider-item-reveal slider-nav-arrow slider-nav-dark slider-nav-sm slider-nav-outside-expand slider-nav-visible slider-nav-noloop slider-nav-autopause slider-indicators-round slider-indicators-dark slider-indicators-outside">
-    <ul class="slider-container">
+    <div class="carrossel">
+      <ul class="slider-container">
         <li class="">
-            <div id="slide10">
+            <div id="slide1">
               <img src="src/img/oasis.jpg" class="album-image" alt="Oasis">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -290,7 +113,7 @@
             </div>
         </li>
               <li class="">
-                  <div id="slide11">
+                  <div id="slide2">
                     <img src="src/img/atribe.jpg" class="album-image" alt="A Tribe">
                     <div class="album-info">
               <h3>Album Title</h3>
@@ -306,7 +129,7 @@
                   </div>
                 </li>
                         <li class="">
-                          <div id="slide12">
+                          <div id="slide3">
                             <img src="src/img/cachorro.jpg" class="album-image" alt="Cachorro">
                             <div class="album-info">
                         <h3>Album Title</h3>
@@ -323,7 +146,7 @@
                           </div>
                         </li>
                                   <li class="">
-                                    <div id="slide13">
+                                    <div id="slide4">
                                       <img src="src/img/coracao.jpg" class="album-image" alt="Coracao">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -340,7 +163,7 @@
                                     </div>
                                   </li>
                                         <li class="slide-visible">
-                                            <div id="slide14">
+                                            <div id="slide5">
                                               <img src="src/img/hammerfal.jpg" class="album-image" alt="Hammer">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -357,7 +180,7 @@
                                             </div>
                                           </li>
                                                 <li class="">
-                                                  <div id="slide15">
+                                                  <div id="slide6">
                                                     <img src="src/img/sabina.jpg" class="album-image" alt="Sabrina">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -374,7 +197,7 @@
                                                   </div>
                                                  </li>
                                                     <li class="">
-                                                      <div id="slide16">
+                                                      <div id="slide7">
                                                         <img src="src/img/brat.jpg" class="album-image" alt="Brat">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -391,7 +214,7 @@
                                                       </div>
                                                     </li>
                                                           <li class="">
-                                                              <div id="slide17">
+                                                              <div id="slide8">
                                                                 <img src="src/img/chapel.jpg" class="album-image" alt="Chapel">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -408,7 +231,7 @@
                                                               </div>
                                                             </li>
                                                                 <li class="">
-                                                                  <div id="slide18">
+                                                                  <div id="slide9">
                                                                     <img src="src/img/mada.jpg" class="album-image" alt="Madaglena">
             <div class="album-info">
               <h3>Album Title</h3>
@@ -423,20 +246,11 @@
               <button class="want-button">Want</button>
                                                                   </div>
                                                                 </li>
-    </ul> 
-
-    <!--<button type="button" class="slider-nav"></button>
-    <button type="button" class="slider-nav slider-nav-next"></button>-->
-  
-    <div class="slider-nav"></div>
-    <div class="slider-nav slider-nav-next"></div>
-
-          <ul class="slider-indicators">
-            <li class="active"></li>
-            <li class=""></li>
-            <li class=""></li>
-            <li class=""></li>
-          </ul>
+      </ul>
+      <div class="carrossel-buttons">
+      <button class="prev"></button>
+      <button class="next"></button>
+      </div>
   </div>
 </div>
 </div>
@@ -503,7 +317,6 @@
         </ul>
 </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
 <script src="java.js"></script>
 
 </body>

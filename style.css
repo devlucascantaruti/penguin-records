@@ -104,6 +104,21 @@
     border: none; /* Remove a borda */
 }
 
+.select-button {
+    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
+    -moz-appearance: none; /* Para Firefox */
+    appearance: none; /* Para outros navegadores */
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: none;
+}
 
 body {
     margin: 0; /* Remove a margem padrão do corpo */
@@ -167,6 +182,25 @@ body {
     margin: 0 6px; /* Adiciona margem mínima entre os itens */
 }
 
+
+#ellipse_cart{
+    font-size: 23px;
+    color: red;
+    position: absolute;
+    top: 10px;
+    right: 214px;
+    display: none;
+}
+
+#cart_count {
+  position: absolute;
+  top: 10px;
+  right: 210px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  display: none;
+}
 
 .button-nav {
     background-color: #31312F;
@@ -325,7 +359,7 @@ a .button-cadastro, .button-cadastro {
 }
 
 .banner-mid-text {
-    position: absolute; /* Posicionamento absoluto em relação ao contêiner pai */
+    position: absolute;
     top: 70%;
     bottom: 20%;
     left: 60%;
@@ -357,12 +391,6 @@ a:hover, h2:hover{
     text-decoration: underline;
 }
 
-.mid{
-    padding-top: 70px;
-    padding-left: 5px;
-    padding-bottom: 90px;
-}
-
 .mid-text{
  position: absolute;
  top: 40%;
@@ -377,14 +405,11 @@ a:hover, h2:hover{
     padding-bottom: 0px;
 }
 
-.text-image{
-    padding-top: 1px;
-}
 
 .mid-content-text{
     position: absolute;
-    top: 110%;
-    left: -25%;
+    top: 43%;
+    left: -28.5%;
     padding-top: 0px;
     text-align: center;
     box-sizing: border-box;
@@ -397,12 +422,55 @@ a:hover, h2:hover{
     margin-bottom: 10px;
 }
 
+.carrossel {
+  position: relative;
+  width: 100%;
+  max-width: 1280px; /* Defina uma largura máxima para o carrossel */
+  margin: 0 auto;
+  overflow: hidden;
+}
 
-.mid {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
-    width: 100%;
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  gap: 20px; /* Espaçamento entre os slides, ajuste conforme necessário */
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.carrossel-buttons {
+  display: flex;
+  justify-content: space-between; /* Posiciona os botões nos lados opostos */
+  align-items: center; /* Alinha verticalmente no centro */
+  width: 100%; /* Largura total para posicionamento correto */
+  margin-top: 10px; /* Espaço entre o carrossel e os botões */
+}
+
+button.prev, button.next {
+  background-color: transparent; /* Remove o fundo padrão */
+  border: none;
+  padding: 10px; /* Ajuste o padding conforme necessário */
+  cursor: pointer;
+  background-size: cover; /* Certifica que a imagem cubra todo o botão */
+  background-repeat: no-repeat;
+  width: 25px; /* Ajuste a largura dos botões conforme o tamanho das imagens */
+  height: 25px; /* Ajuste a altura dos botões conforme o tamanho das imagens */
+}
+
+button.prev {
+  background-image: url('src/img/next.png'); /* Corrige o caminho da imagem do botão "prev" */
+  transform: scaleX(-1); /* Espelha a imagem horizontalmente */
+}
+
+button.next {
+  background-image: url('src/img/next.png'); /* Corrige o caminho da imagem do botão "next" */
 }
 
 .mid-content{
@@ -485,31 +553,6 @@ a:hover, h2:hover{
   }
 
 
-.select-button {
-    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
-    -moz-appearance: none; /* Para Firefox */
-    appearance: none; /* Para outros navegadores */
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    font-size: 17px;
-    cursor: pointer;
-    padding: 5px 10px;
-    display: none;
-}
-
-.swiffy-slider {
-    width: 100%;
-    max-width: 1160px; /* Define uma largura máxima se necessário */
-    height: 100%;
-    margin: 0 100px; /* Centraliza o slider */
-    position: flex;
-    align-items: center;
-}
-
 #slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #slide7, #slide8, #slide9, #slide10, #slide11, #slide12, #slide13, #slide14, #slide15, #slide16, #slide17, #slide18{
     width: 250px;
     min-height: 100%;
@@ -523,32 +566,6 @@ a:hover, h2:hover{
                  0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
-.swiffy-slider .slider-container li:last-child {
-    margin-right: 0;
-}
-
-.swiper-navigation-container {
-    display: center;
-    justify-content: center;
-    margin-top: 30px; /* Espaçamento adicional se necessário */
-}
-
-.swiper-navigation-container {
-    display: relative;
-    justify-content: center;
-    margin-top: 60px; /* Espaçamento adicional se necessário */
-}
-
-.slider-nav, .slider-nav-next{
-    display: flex;
-    margin-top: 450px;
-}
-
-/* Se houver um container de navegação, ajuste conforme necessário 
-.swiffy-navigation-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px; /* Espaçamento adicional se necessário }*/
 
 .album-buttons {
     text-align: center;
