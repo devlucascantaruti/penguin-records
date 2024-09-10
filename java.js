@@ -150,3 +150,70 @@ document.addEventListener("DOMContentLoaded", function () {
   // Inicializar o carrossel
   updateCarousel();
 });
+
+ //API do Youtube para o vídeo 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const playlistId = "PLsAZ9VYSyO13Wp5GD8wM5OYtfMV0sck46";
+  const apiKey = "AIzaSyBDLQToFl2Js8H23pXIEiG86JWdMmrJJ0A"; // Sua chave da API
+  const apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${apiKey}`;
+
+  async function loadPlaylist() {
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log("API Response:", data); // Adicione este log
+      const videoList = data.items;
+
+      const videoFrame = document.getElementById("video-frame");
+      const videoListContainer = document.getElementById("video-list");
+
+      // Limpa a lista de vídeos antes de adicionar novos
+      videoListContainer.innerHTML = "";
+
+      // Adiciona vídeos à lista e define o primeiro vídeo como padrão
+      videoList.forEach((video, index) => {
+        const videoId = video.snippet.resourceId.videoId;
+        const videoTitle = video.snippet.title;
+        const videoThumbnail = video.snippet.thumbnails.medium.url;
+
+        console.log("Processing videoId:", videoId); // Adicione este log
+
+        // Adiciona item à lista
+        const listItem = document.createElement("li");
+        listItem.classList.add("video-thumbnail");
+        listItem.innerHTML = `
+                            <a href="#" data-video-id="${videoId}">
+                                <img src="${videoThumbnail}" alt="${videoTitle}" width="120" height="90">
+                                ${videoTitle}
+                            </a>
+                        `;
+        videoListContainer.appendChild(listItem);
+
+        // Define o primeiro vídeo como padrão
+        if (index === 0) {
+          videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+        }
+      });
+
+      // Configura o evento de clique para mudar o vídeo
+      videoListContainer.addEventListener("click", (event) => {
+        if (event.target.tagName === "A" || event.target.tagName === "IMG") {
+          event.preventDefault();
+          const videoId = event.target
+            .closest("a")
+            .getAttribute("data-video-id");
+          videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`; // ?autoplay=1 para iniciar automaticamente
+        }
+      });
+    } catch (error) {
+      console.error("Error loading playlist:", error);
+    }
+  }
+
+  // Carrega a playlist ao iniciar
+  loadPlaylist();
+});

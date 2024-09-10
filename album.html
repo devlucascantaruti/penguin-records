@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Penguin Records</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="newstyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="icon-site" type="imagex/png" href="src/img/logo3-_2_.ico">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>  
+  <div class="header">
+  <!--<img class="img-header" src="src/img/logofinal2.png" alt="Penguin Records">-->
+    <div class="logo"><h1>Penguin Records</h1></div>
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Pesquisar artistas, album e mais...">
+    </div>
+    <nav class="nav-home">
+      <li>
+        <div class="custom-select">
+          <div class="select-display">Discos<ion-icon name="caret-down" class="setaprabaixo"></ion-icon></div>
+          <div id="markdown-content" class="hidden">
+            <div class="select-items">
+              <div class="genres-header">Genêros</div>
+                <div class="column-container">
+                  <div class="column">
+                  <div class="item" data-url="#">Blues</div>
+                  <div class="item" data-url="#">Funk</div>
+                  <div class="item" data-url="#">Jazz</div>
+                  <div class="item" data-url="#">Rock</div>
+                  <div class="item" data-url="#">Soundtrack</div>
+                  <div class="item" data-url="#">New Metal</div>
+                </div>
+              </div>
+              <div class="column">
+                  <div class="item" data-url="#">MPB</div>
+                  <div class="item" data-url="#">Metal</div>
+                  <div class="item" data-url="#">Pop</div>
+                  <div class="item" data-url="#">Reggae</div>
+                  <div class="item" data-url="#">Forró</div>
+                  <div class="item" data-url="#">Soul</div>
+              </div>
+              <div class="column">
+                <div class="item" data-url="#">Metal</div>
+                <div class="item" data-url="#">Samba</div>
+                <div class="item" data-url="#">Soul</div>
+                <div class="item" data-url="#">Rap</div>
+                <div class="item" data-url="#">Country</div>
+                <div class="item" data-url="#">Kpop</div>
+              </div>
+            <select class="select-button">
+              <option value="blues">Blues</option>
+              <option value="funk">Funk</option>
+              <option value="jazz">Jazz</option>
+              <option value="mpb">MPB</option>
+              <option value="pop">Pop</option>
+              <option value="rock">Rock</option>
+              <option value="metal">Metal</option>
+              <option value="reggae">Reggae</option>
+              <option value="samba">Samba</option>
+              <option value="soul">Soul</option>
+              <option value="rap">Rap</option>
+              <option value="forro">Forró</option>
+            </select>
+      </div>
+      </li>
+      <button class="button-nav">Novidades</button>
+      <button class="button-nav">Promoções</button>
+        <li><a href="#" id="carrinho_site"><ion-icon name="cart"></ion-icon></li></a><ion-icon id="ellipse_cart" name="ellipse"></ion-icon><span id="cart_count">0</span>
+        <li><a href="login.html" id="link_login">Login</a></li>
+        <li><a href="#"><button class="button-cadastro">Cadastro</button></a></li>
+    </nav>
+</nav>
+</div>
+
+<div class="main-content"></div>
+<main class="container">
+  <!-- Coluna da esquerda -->
+  <section class="left-column">
+    <!-- Informação do álbum -->
+    <div class="album-info">
+      <img src="src/img/clairo.jpg" alt="Album Cover" class="album-cover">
+      <div class="details">
+        <h1>Artist Name - Album Name</h1>
+        <ul>
+          <li><strong>Label:</strong> Pinguin Records</li>
+          <li><strong>Format:</strong> Vinyl, LP, Album, Limited Edition</li>
+          <li><strong>Country:</strong> Brasil, USA, Canada & Europe</li>
+          <li><strong>Released:</strong> Aug 1, 2024</li>
+          <li><strong>Genre:</strong> Rock</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tracklist -->
+    <section class="tracklist">
+      <h2>Tracklist</h2>
+      <ul>
+        <li>
+            <span class="lp-side">A1</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">A2</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">A3</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">A4</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">B1</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">B2</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">B3</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+        <li><span class="lp-side">B4</span><span class="music-title">Music title</span>
+            <p>Bass - Olivia Jean</p>
+            <p>Drums, Percussion - Patrick Keeler</p>
+            <p>Guitar, Vocals - JWIII</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Credits -->
+    <section class="credits">
+      <h2>Credits</h2>
+        <p>Artwork [Cover Art Made By] – Lisa Brown (7), Mark Thompson (3), Eva Collins</p>
+        <p>Engineer – Robert King</p>
+        <p>Engineer [Additional] – Alan Smith* (tracks: B2)</p>
+        <p>Engineer [Assistant] – Sarah Johnson (2), George Diaz</p>
+        <p>Lacquer Cut By – DH*
+        <p>Layout – Clara Roberts (5), Kevin Lee
+        <p>Management [Managed Exclusively By] – Rebecca Stevens, Stellar Management</p>
+        <p>Mastered By [Mastered For Vinyl & Digital By] – David Greene</p>
+        <p>Mixed By – Jane Williams, Michael Carter (4)</p>
+        <p>Photography By [Cover Photograph By] – Maria Gonzales</p>
+        <p>Producer [Produced By] – Michael Williams III*</p>
+        <p>Written-By [All Songs Written By] – Michael Williams (2)</p>
+    </section>
+
+    <!-- Companies -->
+    <section class="companies">
+      <h2>Companies</h2>
+      <p>Recorded At – Third Man Studio</p>
+      <p>Published By – Third String Tunes</p>
+      <p>Published By – Universal Music Corp.</p>
+      <p>Mastered At – Bernie Grundman Mastering</p>
+      <p>Phonographic Copyright ℗ – Jack White (2)</p>
+      <p>Copyright © – Third Man Records</p>
+      <p>Manufactured By – Third Man Pressing</p>
+      <p>Pressed By – Third Man Pressing</p>
+    </section>
+
+    <!-- Notes -->
+    <section class="notes">
+      <h2>Notes</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </section>
+
+    <!-- Seção de Reviews (dentro da left-column) -->
+
+  </section>
+
+  <!-- Coluna da direita -->
+  <section class="right-column">
+    <!-- Release Info -->
+    <section class="release-info">
+      <h2>Release Info</h2>
+      <ul>
+        <li><a href="#"><p>Edit Release</p></a></li>
+        <li><a href="#"><p>See all version</p></a></li>
+        <li><p>Correct</p></li>
+      </ul>
+    </section>
+
+    <!-- Botão de Shop -->
+    <section class="shop-button">
+      <button class="button-shop">Shop Now</button>
+    </section>
+
+
+    <section class="for-sale">
+    <h2>For sale on Pinguin Records</h2>
+    <p>200 copies from R$185.73</p>
+    </section>
+
+    <!-- Statistics -->
+    <section class="statistics">
+      <h2>Statistics</h2>
+      <div class="statistics-container">
+      <ul>
+        <li><p>Have: 5221</p></li>
+        <li><p>Want: 1390</p></li>
+        <li><p>Avg Rating: 4.67/5</p></li>
+        <li><p>Ratings: 227</p></li>
+      </ul>
+      <ul>
+        <li><p>Last sold: 20/08/2024</p></li>
+        <li><p>Low: R$174.42</p></li>
+        <li><p>Median: R$243.30</p></li>
+        <li><p>High: R$303.18</p></li>
+      </ul>
+      </div>
+
+      <div class="divider"></div> <!-- Linha divisória -->
+
+    <div class="stars-and-share">
+        <div class="stars">
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        </div>
+        <div class="separator"></div>
+        <a href="#" class="share-link"><button class="share-button"><ion-icon name="share"></ion-icon>Share</a></button>
+    </div>
+
+
+    <ul class="button-list">
+    <li><button class="addcollection"><ion-icon name="book"></ion-icon> Add to Collection</button></li>
+    <li><button class="addwishlist"><ion-icon name="heart"></ion-icon> Add to Wantlist</button></li>
+    </ul>
+
+    </section>
+
+    <!-- Videos -->
+    <section class="video-thumbnails">
+    <h2>Videos</h2>
+    <div class="video-player">
+        <iframe id="video-frame" width="315" height="200" src="https://www.youtube.com/embed/WBjmnqewTeo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+        <div id="video-controls">
+            <ul id="video-list"> 
+            </ul>
+        </div>
+    </section>
+
+    <section class="reviews">
+      <h2>Reviews</h2>
+      <button class="button-review">Add Review</button>
+      <div class="review">
+        <p><strong>markolindeman</strong> Sep 7, 2024</p>
+        <p>⭐⭐⭐⭐ Killer songs, killer authentic overdrived guitar...</p>
+        <a href="#">Reply</a> <a href="#">1 Helpful</a>
+      </div>
+      <div class="review">
+        <p><strong>debaerdemaeker78</strong> Sep 6, 2024</p>
+        <p>Edited 4 days ago - Any differences between the pressing of August...</p>
+        <a href="#">Reply</a> <a href="#">1 Helpful</a>
+      </div>
+      <!-- Adicione mais resenhas aqui -->
+    </section>
+
+  </section>
+</main>
+
+<div class="footer">
+  <div class="footer-content">
+    <ul>
+    <li><span id="alt-text">Penguin Records</span></li>
+    <li><a href="#">Sobre nós</a></li>
+    <li><a href="#">Nosso Jornal</a></li>
+    <li><a href="#">Trabalhe Conosco</a></li>
+    </ul>
+    <ul>
+    <li><span id="alt-text">Siga nos</span></li>
+    <li><a href="#">Facebook</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">Twitter</a></li>
+    <li><a href="#">Tiktok</a></li>
+    </ul>
+    <ul>
+    <li><span id="alt-text">Venha nos visitar</span></li>
+    <li><a href="#">Endereço</a></li>
+    <li><a href="#">Contato</a></li>
+    </ul>
+    <ul>
+    <li><span id="alt-text">Em qualquer lugar</span></li>
+    <li><a href="#"><img class="google-play-badge" src="src/img/google-play-badge.png"></a></li>
+    <li><a href="#"><img class="app-store-badge" src="src/img/app-store-badge.png"></a></li>
+    </ul>
+  </div>
+
+</class>
+
+<nav id="nav_footer">
+    <div class="nav_footer">
+        <ul>
+            <li><span id="logo-text">Penguin Records</span></li>
+            <li><span id="logo-trademark">© 2024 Penguin Records®</span></li>
+            <li><button id="cookie-settings"><a href="#">Cookie Settings</a></button></li>
+            <li><a href="#">Política de Cookies</a></li>
+            <li><a href="#">Termos de Serviço</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+
+            <span id="language_container">
+                <label id="i18n_link" for="i18n_select" href="#select-language" data-code="pt_BR" data-name="Português (Brasil)">
+                <ion-icon name="earth"></ion-icon>
+                <select id="i18n_select">
+                <option id="language_en_field" name="language_code" class="language" value="en" lang="en"> English </option>
+                <option id="language_es_field" name="language_code" class="language" value="es" lang="es"> Español </option>
+                <option id="language_fr_field" name="language_code" class="language" value="fr" lang="fr"> Français </option>
+                <option id="language_it_field" name="language_code" class="language" value="it" lang="it"> Italiano </option>
+                <option id="language_pt_BR_field" name="language_code" class="language" value="pt_BR" lang="pt-BR" selected=""> Português (Brasil) </option>
+                </select>
+                </label>
+            </span>
+        </ul>
+</nav>
+
+<script src="java.js"></script>
+
+</body>
+</html>

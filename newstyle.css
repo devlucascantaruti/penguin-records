@@ -1,0 +1,922 @@
+html, body {
+    height: 100%; /* Garante que o body ocupe 100% da altura da tela */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    position: flex;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #31312F;
+    list-style-type: none;
+    flex-shrink: 0; /* O header terá tamanho fixo */
+}
+
+.header .logo{
+    flex:1;
+}
+
+.header .search-container{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.header .nav-home{
+    display: flex;
+    align-items: center;
+    flex: 3;
+    justify-content: center;
+    list-style: none;
+}
+
+.header .nav-home > * {
+    margin: 0 10px; /* Espaçamento entre os itens */
+}
+
+.header .button-nav,
+.header .button-cadastro {
+  flex:6;
+  text-align: center;
+}
+
+.header #carrinho_site ion-icon,
+.header #link_login ion-icon {
+  vertical-align: middle;
+  flex: 5;
+}
+
+.header .select-display{
+    flex:5;
+}
+
+/* Estilo base do botão de exibição do dropdown */
+.select-display {
+    background-color: #31312F; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-family: Arial, Helvetica, sans-serif; /* Fonte */
+    border: none; /* Remove a borda */
+    outline: none; /* Remove o contorno */
+    font-size: 17px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de pointer */
+    padding: 5px 10px; /* Padding interno */
+    display: flex; /* Alinha o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    margin-left: -40px; /* Ajuste a margem conforme necessário */
+}
+
+/* Estilo quando o botão está em hover */
+.select-display:hover {
+    background-color: black; /* Cor de fundo em hover */
+    color: white; /* Cor do texto em hover */
+}
+
+/* Estilo quando o botão está ativo (clicado) */
+.select-display.active {
+    background-color: black; /* Cor de fundo ativa */
+    color: white; /* Cor do texto ativa */
+}
+
+/* Estilo do ícone dentro do botão */
+.select-display.active::after, /* Quando o botão estiver ativo */
+.select-display:hover::after, /* Quando o botão estiver em hover */
+.setaprabaixo:hover { /* Quando o ícone estiver em hover */
+    color: white; /* Cor do ícone */
+}
+
+/* Estilo quando o botão está ativo e o ícone deve girar */
+.select-display.active .setaprabaixo {
+    transform: rotate(180deg); /* Rotaciona a seta para cima */
+}
+
+/* Estilo do botão personalizado */
+.select-button:hover,
+.select-button:focus {
+    background-color: #31312F; /* Cor de fundo em hover/focus */
+    color: white; /* Cor do texto em hover/focus */
+    outline: none; /* Remove o contorno */
+    border: none; /* Remove a borda */
+}
+
+.select-button {
+    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
+    -moz-appearance: none; /* Para Firefox */
+    appearance: none; /* Para outros navegadores */
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: none;
+}
+
+body {
+    margin: 0; /* Remove a margem padrão do corpo */
+    padding: 0; /* Remove o padding padrão do corpo */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    color: white;
+    font-family: "Anton", sans-serif;
+    font-size: 13px;
+    width: 100%;
+    padding-bottom: 0px;
+    margin-left: 360px;
+}
+
+.search-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px; /* Ajusta o tamanho da barra de pesquisa */
+    margin-left: -230px;
+}
+
+#search-bar {
+    width: 330px;
+    height: 40px;
+    border: none;
+    font-size: 17px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px double black;
+}
+
+#search-bar:focus {
+    outline: none;
+    width: 350px;
+    border: #000 1px double;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-shadow: 0 0 0 2px #668CFF;
+    margin-left: 30px;
+}
+
+.nav-home{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap; /* Permite que os itens quebrem de linha se necessário */
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-home, .custom-select{
+    width: 100%;
+    text-align: center;
+}
+
+#link_login, #carrinho_site, .button-cadastro {
+    margin: 0 6px; /* Adiciona margem mínima entre os itens */
+}
+
+
+#ellipse_cart{
+    font-size: 23px;
+    color: red;
+    position: absolute;
+    top: 10px;
+    right: 190px;
+    display: none;
+}
+
+#cart_count {
+  position: absolute;
+  top: 13px;
+  right: 198px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  display: none;
+}
+
+.button-nav {
+    background-color: #31312F;
+    display: relative;
+    width: 10px;
+    color: white;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden-buttons{
+    display: none;
+}
+
+.search-container{
+  width: 490px;
+  display: block;
+}
+
+.genres-header {
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    grid-column: 2; /* Centraliza na segunda coluna */
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: center; /* Centraliza as colunas horizontalmente */
+    gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.select-items {
+    display: none; /* Oculta o dropdown por padrão */
+    position: absolute; /* Posiciona o dropdown em relação ao elemento pai */
+    background-color: black;
+    border: 1px solid #444; /* Adiciona uma borda sutil ao dropdown */
+    border-radius: 4px; /* Adiciona bordas arredondadas ao dropdown */
+    z-index: 1000; /* Garante que o dropdown fique sobre outros elementos */
+    top: 100%; /* Posiciona o dropdown abaixo do botão */
+    left: 0; /* Alinha o dropdown com o botão */
+}
+
+.select-items .item {
+    padding: 10px 15px; /* Ajusta o padding dos itens do dropdown */
+    color: white;
+    cursor: pointer;
+}
+
+.select-items.show {
+    display: block; /* Mostra o dropdown quando a classe show está presente */
+}
+
+.button-nav:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    display: relative;
+}
+
+a .button-cadastro{
+    text-decoration: none;
+}
+
+li a {
+    text-decoration: none; /* Remove o sublinhado de todos os links dentro da lista */
+}
+
+a .button-cadastro, .button-cadastro {
+    text-decoration: none; /* Garante que o sublinhado seja removido especificamente para o botão */
+}
+
+#carrinho_site {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    text-align: center;
+    display: relative;
+}
+
+#carrinho_site:hover {
+    background-color: black;
+    color: white;
+}
+
+.button-cadastro {
+    background-color: #F5DF2E;
+    color: #000000;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: Helvetica;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#link_login {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#link_login:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: relative;
+}
+
+
+/*.img-header{
+    width: 60px;
+    margin-left: 300px;
+    padding-right: 8px;
+    color: white;
+    align-items: center;
+    box-sizing: border-box;
+}*/
+
+.banner-header{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: -5px;
+}
+
+.custom-select {
+    position: relative; /* Necessário para o dropdown */
+}
+
+.custom-select:hover .select-items {
+    display: flex; /* Exibe o dropdown ao passar o mouse */
+}
+
+
+.setaprabaixo{
+    font-size: 13px;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+
+#markdown-content.hidden {
+    display: none;
+}
+
+.select-items {
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    border: none;
+    z-index: 99;
+    min-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.select-items.show {
+    display: flex;
+}
+
+.select-items .column {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.select-items .item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.select-items .item:hover {
+    text-decoration: underline;
+    color: #4DD2FF;
+}
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.main-content {
+    flex-grow: 1; /* O conteúdo principal cresce para ocupar o espaço restante */
+    padding-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  max-width: 1200px; /* Define a largura máxima da página */
+  margin: 0 auto; /* Centraliza a página */
+  padding: 20px;
+}
+
+.left-column, .right-column {
+  padding: 100px;
+}
+
+.left-column {
+  flex: 2; /* Maior parte da tela será ocupada pela coluna esquerda */
+  margin-right: 20px; /* Espaçamento entre as colunas */
+}
+
+.right-column {
+  flex: 1; /* Coluna da direita ocupa menos espaço */
+  background-color: white;
+  padding: 20px;
+}
+
+.album-info {
+  display: flex;
+}
+
+.album-cover {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.details {
+  max-width: 600px;
+}
+
+.details h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.details ul {
+  list-style: none;
+  padding: 0;
+}
+
+h2{
+    padding: 0px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.lp-side{
+    font-weight: 500;
+    font-size: 13px;
+    padding-right: 25px;
+}
+
+.music-title{
+    font-weight: 600;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tracklist ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tracklist ul li {
+  padding: 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+.track-info span {
+  margin-left: auto;
+}
+
+.tracklist p{
+    font-size: 10px;
+    line-height: 0.5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.credits, .companies, .notes {
+  margin-top: 20px;
+}
+
+.credits p{
+    font-size: 10px;
+    line-height: 0.5;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.notes p{
+    font-size: 10px;
+    line-height: 0.5;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.companies p{
+    font-size: 10px;
+    line-height: 0.5;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Seção de Reviews */
+.reviews {
+  margin-top: 20px;
+  clear: both; /* Garante que a seção reviews comece após os itens acima */
+}
+
+.button-review {
+    display: inline-block;
+    background-color: #f5f4ec;
+    border: 0.2px solid #cecdc6;
+    border-radius: 5px;
+    padding: 5px 0;
+    width: 100px;
+    height: 30px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    font-size: 11px;
+    font-family: 'helvetica';
+    padding: 5px 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.button-review:hover{
+    background-color: #000;
+    color: white;
+}
+
+.review {
+  padding: 10px 0;
+}
+
+.reviews h2 {
+    font-size: 11px;
+}
+
+.review p {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.review a {
+  margin-right: 10px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.review a:hover {
+  text-decoration: underline;
+}
+
+.right-column section {
+  margin-bottom: 20px;
+}
+
+.statistics ul, .release-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.statistics ul li, .release-info ul li {
+  margin: 5px 0;
+}
+
+.button-shop {
+  background-color: #00800B;
+  border-radius: 4px;
+  border: 1px solid #000;
+  color: white;
+  font-size: 11px;
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  width: 315px;
+}
+
+.button-shop:hover {
+  background-color: #45a049;
+}
+
+.release-info h2{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.release-info p{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0.2;
+}
+
+.release-info a:hover{
+    text-decoration: underline;
+    color: #007BFF;
+}
+
+.for-sale p{
+    font-size: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.for-sale h2{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.statistics{
+    margin-bottom: 5px; /* Reduz o espaço entre o título e as colunas */
+}
+
+.statistics-container {
+    display: flex;
+    justify-content: space-between; /* Distribui o conteúdo igualmente */
+    margin-top: 0; /* Remove qualquer margem superior extra */
+}
+
+.statistics ul {
+    padding: 0;
+    margin: 0;
+}
+
+.statistics h2{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.statistics p{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0.1;
+    display: flex;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.stars-and-share {
+    display: flex;
+    justify-content: center; /* Distribui o conteúdo igualmente */
+    gap: 33px; /* Espaçamento entre os itens */
+}
+
+.separator {
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    height: 35px; /* Define a altura da linha */
+    margin: 0 10px; /* Espaçamento ao redor do separador */
+    position: relative; /* Garante que siga o fluxo flexbox */
+    top: -10px;
+}
+
+.stars {
+    color: #555555;
+    font-size: 14px;
+    width: 100%;
+}
+
+.share-link {
+    font-size: 11px;
+    color: #2653D9;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.share-button{
+    background-color: white;
+    border: none;
+}
+
+.share-button:hover {
+    color: #4DD2FF;
+    background-color: #E5E5E5;
+    width: 60px;
+    height: 30px;
+    border-radius: 6px;
+}
+
+.button-list {
+    list-style-type: none; /* Remove marcadores da lista */
+    padding: 0; /* Remove padding padrão */
+    margin: 0; /* Remove margin padrão */
+    display: flex; /* Faz com que os itens da lista se alinhem lado a lado */
+    gap: 5px; /* Espaço entre os botões */
+}
+
+.addcollection, .addwishlist{
+    background: #f5f4ec;
+    color: #31312f;
+    border: 0.2px solid #cecdc6;
+    border-radius: 5px;
+    padding: 5px 0;
+    width: 125px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    font-size: 11px;
+    font-family: 'helvetica';
+}
+
+.addcollection:hover, .addwishlist:hover{
+    background-color: #000;
+    color: white;
+}
+
+.video-thumbnails h2{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.video-thumbnails {
+    box-sizing: border-box;
+}
+
+#video-player{
+    margin-bottom: 0;
+}
+
+#video-controls {
+    flex: 1;
+    padding: 0px;
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+    position: sticky;
+    top: 0; /* Fixa o topo da barra lateral */
+    height: 150px; /* Altura da tela */
+    background-color: white;
+}
+
+#video-controls ul{
+    list-style: none;
+    padding: 0;
+    background-color: white;
+    margin: 0;
+}
+
+#video-controls li {
+    margin-bottom: 1px;
+}
+
+#video-list img {
+    margin-right: 1px;
+}
+
+#video-list a {
+    text-decoration: none;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #007BFF;
+    display: flex;
+    align-items: center;
+}
+
+/* Footer - Layout fixo no fluxo normal da página */
+.footer {
+    background-color: #232323;
+    color: #CCCCCC;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+/* Conteúdo do footer - Ajustes no espaçamento */
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre as listas */
+    padding: 40px 20px;
+    padding-bottom: 100px; /* Adiciona espaço para evitar sobreposição */
+}
+
+.footer-content ul {
+    list-style-type: none;
+    line-height: 1.5;
+    margin: 0 10px;
+}
+
+.footer-content a {
+    text-decoration: none;
+    font-family: 'Helvetica', sans-serif;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+    color: #4DD2FF;
+}
+
+#alt-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 3.0;
+}
+
+.google-play-badge, .app-store-badge {
+    width: 140px;
+    height: 45px;
+    padding-top: 2px;
+}
+
+/* Nav Footer */
+#nav_footer {
+    position: flex;
+    background-color: #333333;
+    width: 100%;
+    bottom: 0; /* Fixa o nav_footer na parte inferior da página */
+    padding: 10px 20px;
+    text-align: center;
+    z-index: 1000; /* Certifica que ele aparece sobre outros elementos */
+}
+
+#nav_footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav_footer ul li {
+    margin: 0 15px; /* Espaçamento entre os itens */
+    display: inline-block;
+}
+
+/* Links dentro do nav_footer */
+#nav_footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+
+#nav_footer ul li a:hover {
+    text-decoration: underline;
+    color: #4DD2FF;
+}
+
+/* Estilos do seletor de idiomas */
+#i18n_link ion-icon {
+    margin-left: 150px;
+    margin-right: 0px; /* Espaçamento entre o ícone e o texto */
+    font-size: 13px;
+}
+
+#i18n_select {
+    background-color: #333333;
+    border-color: #333333;
+    color: white;
+    padding: 5px;
+    vertical-align: baseline;
+    overflow: visible;
+    display: inline-block;
+}
+
+#i18n_select option {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    width: 100%;
+    vertical-align: baseline;
+    overflow: visible;
+    display: inline-block;
+}
+
+#logo-text {
+    color: white;
+    font-family: "Anton", sans-serif;
+    font-size: 20px;
+}
+
+#logo-trademark {
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+}
+
+#cookie-settings {
+    background-color: #333333;
+    border: 1px solid #f2f2f2;
+    padding: 8px 20px;
+    border-width: 1px;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+}
