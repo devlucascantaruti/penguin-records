@@ -67,3 +67,30 @@ togglePassword.addEventListener('click', function () {
       passwordInput.classList.remove('focused');
     }
   });
+
+
+ document.querySelector("form").addEventListener("submit", async (e) => {
+   e.preventDefault();
+
+   const username = document.getElementById("username").value; // Mantenha isso se ainda precisar do username
+   const password = document.getElementById("password").value;
+
+   const response = await fetch("http://localhost:5000/api/auth/login", {
+     // Altere para o endpoint correto
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify({ username, password }),
+   });
+
+   const data = await response.json();
+
+   if (!response.ok) {
+     alert(data.error || "Erro ao tentar logar!");
+   } else {
+     alert(data.message); // Mensagem de sucesso
+     // Aqui você pode redirecionar o usuário para outra página
+     // window.location.href = "home.html";
+   }
+ });
