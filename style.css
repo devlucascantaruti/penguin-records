@@ -30,9 +30,8 @@
 
 .header .nav-home{
     display: flex;
-    align-items: center;
     flex: 3;
-    justify-content: center;
+    justify-content: flex-end;
     list-style: none;
 }
 
@@ -42,18 +41,24 @@
 
 .header .button-nav,
 .header .button-cadastro {
-  flex:6;
-  text-align: center;
+  flex:0.5;
 }
 
 .header #carrinho_site ion-icon,
 .header #link_login ion-icon {
   vertical-align: middle;
-  flex: 5;
+  flex: 0.3;
 }
 
 .header .select-display{
     flex:5;
+}
+
+.custom-select, .button-nav, .search-container{
+    display: flex;
+    align-items: flex-end;
+    left: 0;
+    right: 0;
 }
 
 /* Estilo base do botão de exibição do dropdown */
@@ -68,7 +73,6 @@
     padding: 5px 10px; /* Padding interno */
     display: flex; /* Alinha o conteúdo */
     align-items: center; /* Alinha verticalmente o conteúdo */
-    margin-left: -40px; /* Ajuste a margem conforme necessário */
 }
 
 /* Estilo quando o botão está em hover */
@@ -105,9 +109,9 @@
 }
 
 .select-button {
-    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
-    -moz-appearance: none; /* Para Firefox */
-    appearance: none; /* Para outros navegadores */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
@@ -142,7 +146,6 @@ body {
     align-items: center;
     justify-content: center;
     width: 350px; /* Ajusta o tamanho da barra de pesquisa */
-    margin-left: -230px;
 }
 
 #search-bar {
@@ -165,23 +168,24 @@ body {
     margin-left: 30px;
 }
 
+
 .nav-home{
     display: flex;
     align-items:center;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-end;
     list-style-type: none;
+    z-index: 1000;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
 }
 
-.nav-home, .custom-select{
-    width: 100%;
-    text-align: center;
-}
 
 #link_login, #carrinho_site, .button-cadastro {
-    margin: 0 6px; /* Adiciona margem mínima entre os itens */
+    margin: 0 3px; /* Adiciona margem mínima entre os itens */
 }
-
 
 #ellipse_cart{
     font-size: 23px;
@@ -223,12 +227,11 @@ body {
 }
 
 .genres-header {
+    display: relative;
+    position: fixed;
     color: white;
-    padding: 12px 20px;
     font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
-    grid-column: 2; /* Centraliza na segunda coluna */
+    padding: 15px;
 }
 
 .column{
@@ -240,7 +243,7 @@ body {
 .columns-container {
     display: flex;
     justify-content: center; /* Centraliza as colunas horizontalmente */
-    gap: 20px; /* Espaçamento entre as colunas */
+    gap: 3px; /* Espaçamento entre as colunas */
 }
 
 .select-items {
@@ -338,17 +341,28 @@ a .button-cadastro, .button-cadastro {
 
 .banner-header{
     position: relative;
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin-bottom: -5px;
+    max-width: 100%;
+    margin: 0px;
+    padding: 0;
 }
 
 .banner-mid{
     position: flex;
     height: 100%;
     object-fit: cover;
-    padding-top: -100px;
+    padding-top: 0px;
+}
+
+.img-banner{
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0px;
+    padding: 0;
 }
 
 .img-banner-mid{
@@ -388,7 +402,7 @@ a, h2{
     text-align: center;
     font-size: 15px;
     text-decoration: none;
-    padding-top: 40px;
+    padding-top: 70px;
 }
 
 a:hover, h2:hover{
@@ -597,12 +611,13 @@ button.next {
     padding-bottom: 120px;
     box-sizing: border-box;
     width: 100%;
-    min-height: 700px;
+    min-height: 600px;
 }
 
 .subscribe-text{
     width: 1500px;
     margin-left: -100px;
+    margin-bottom: 20px;
 }
 
 .subscribe-form{
@@ -659,9 +674,9 @@ border-radius: 5px;
     font-size: 23px;
     line-height: 1.5;
     margin-right: 500px;
-    padding-top: 10px;
+    padding-top: -10px;
     padding-left: 230px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     text-align: left;
@@ -695,18 +710,12 @@ h5{
     cursor: pointer;
 }
 
-
-#markdown-content.hidden {
-    display: none;
-}
-
 .select-items {
     display: none;
     position: absolute;
     background-color: black;
     color: white;
     border: none;
-    z-index: 99;
     min-width: 300px;
     font-family: Arial, Helvetica, sans-serif;
     flex-direction: row;
@@ -754,6 +763,7 @@ h5{
     background-color: #232323;
     position: relative;
     width: 100%;
+    height: 80px;
     z-index: 1;
 }
 
