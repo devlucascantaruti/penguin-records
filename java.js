@@ -155,8 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   const playlistId = "PLsAZ9VYSyO13Wp5GD8wM5OYtfMV0sck46";
-  const apiKey = "AIzaSyBDLQToFl2Js8H23pXIEiG86JWdMmrJJ0A"; // Sua chave da API
-  const apiUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${apiKey}`;
+  const apiUrl = `/api/youtube/playlist?playlistId=${playlistId}`;
 
   async function loadPlaylist() {
     try {
