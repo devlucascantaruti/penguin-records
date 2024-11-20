@@ -93,9 +93,8 @@ document.addEventListener("click", function (event) {
     const data = await response.json();
     alert(data.message); // Exibe a mensagem de resposta do servidor
 
-    // Aqui você pode adicionar lógica adicional, como redirecionar o usuário após o registro
     if (response.ok) {
-      // Redirecionar ou limpar o formulário, se necessário
-      // window.location.href = "/login"; // Exemplo de redirecionamento
+     window.location.href = "email-confirmation.html";
+     localStorage.setItem("nomeUsuario", data.username);
     }
   });

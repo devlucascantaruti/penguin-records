@@ -90,7 +90,7 @@ togglePassword.addEventListener('click', function () {
      alert(data.error || "Erro ao tentar logar!");
    } else {
      alert(data.message); // Mensagem de sucesso
-     // Aqui você pode redirecionar o usuário para outra página
-     // window.location.href = "home.html";
+    localStorage.setItem("nomeUsuario", data.username);
+     window.location.href = "index.html";
    }
  });

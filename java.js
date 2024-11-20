@@ -216,3 +216,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Carrega a playlist ao iniciar
   loadPlaylist();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const username = localStorage.getItem('username');
+
+    if (username) {
+        const cadastroButton = document.querySelector('.button-cadastro');
+
+        if (cadastroButton) {
+            cadastroButton.textContent = `${username}`;
+        }
+    }
+});
