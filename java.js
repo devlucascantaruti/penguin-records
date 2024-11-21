@@ -3,23 +3,19 @@ document.querySelector('.select-display').addEventListener('click', function(eve
     var dropdown = this.nextElementSibling;
     var isVisible = dropdown.classList.contains('show');
 
-    // Alterna a visibilidade do dropdown e a classe ativa do botão
     dropdown.classList.toggle('show', !isVisible);
     this.classList.toggle('active', !isVisible);
 
-    // Evita que o clique no botão feche o dropdown
     event.stopPropagation();
 });
 
-// Fecha o dropdown ao clicar fora dele e do botão
 document.addEventListener('click', function(event) {
     var dropdown = document.querySelector('.select-items');
     var display = document.querySelector('.select-display');
 
-    // Verifica se o dropdown está aberto e se o clique foi fora dele e do botão
     if (!dropdown.contains(event.target) && !display.contains(event.target)) {
-        dropdown.classList.remove('show'); // Fecha o dropdown
-        display.classList.remove('active'); // Remove o estado ativo do botão
+        dropdown.classList.remove('show'); 
+        display.classList.remove('active');
     }
 });
 

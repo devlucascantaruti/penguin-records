@@ -4,67 +4,90 @@
     box-sizing: border-box;
 }
 
-.header{
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
     position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
     width: 100%;
-    height: 60px;
+    height: 60px; /* Altura fixa para a barra de navegação */
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #31312F;
-    list-style-type: none;
+    justify-content: center; /* Centraliza todos os itens horizontalmente */
+    align-items: center;     /* Centraliza todos os itens verticalmente */
+    background-color: white;
+    gap: 20px;               /* Distância entre os elementos */
+    transition: all 0.3s ease; /* Transição suave para o movimento dos itens */
 }
 
-.header .logo{
-    flex:1;
+.header .logo {
+    margin: 0 20px; /* Garante a mesma distância do logo como os outros elementos */
+    text-align: center;  /* Centraliza o logo */
 }
 
-.header .search-container{
-    flex: 2;
+.logo {
+    font-family: "Anton", sans-serif; /* Fonte do logo */
+    color: black;
+}
+
+.header .search-container {
     display: flex;
     justify-content: center;
+    gap: 20px;               /* Distância entre os itens dentro da search-container */
+    align-items: center;    /* Centraliza a barra de pesquisa verticalmente */
+    transition: all 0.3s ease; /* Transição suave para os itens internos */
 }
 
-.header .nav-home{
+.header .nav-home {
     display: flex;
-    flex: 3;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 20px;               /* Distância entre os itens no menu */
     list-style: none;
+    align-items: center;
+    position: relative;
+    z-index: 100;           /* Garante que os itens de navegação fiquem acima da pesquisa */
+    transition: opacity 0.3s ease; /* Transição para ocultar/mostrar os botões */
+}
+
+.header .nav-home.hide {
+    opacity: 0; /* Esconde os itens de navegação */
+    pointer-events: none; /* Impede a interação com os itens quando ocultos */
 }
 
 .header .nav-home > * {
-    margin: 0 10px; /* Espaçamento entre os itens */
+    margin: 0;
+    height: 100%; /* Faz o botão preencher toda a altura da barra de navegação */
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente dentro do botão */
 }
 
 .header .button-nav,
 .header .button-cadastro {
-  flex:0.5;
+    padding: 0 15px; /* Ajusta o tamanho horizontal dos botões */
+    height: 100%; /* Faz o botão ter a altura completa da barra de navegação */
+    display: flex;
+    align-items: center; /* Centraliza o conteúdo dentro do botão */
 }
 
 .header #carrinho_site ion-icon,
 .header #link_login ion-icon {
-  vertical-align: middle;
-  flex: 0.3;
+    vertical-align: middle;
+    flex: 0.3;
 }
 
-.header .select-display{
-    flex:5;
+.header .select-display {
+    flex: 5;
 }
 
-.custom-select, .button-nav, .search-container{
+.custom-select, .button-nav, .search-container {
     display: flex;
-    align-items: flex-end;
-    left: 0;
-    right: 0;
+    align-items: center;
 }
 
-/* Estilo base do botão de exibição do dropdown */
 .select-display {
-    background-color: #31312F; /* Cor de fundo */
-    color: white; /* Cor do texto */
+    background-color: white; /* Cor de fundo */
+    color: black; /* Cor do texto */
     font-family: Arial, Helvetica, sans-serif; /* Fonte */
     border: none; /* Remove a borda */
     outline: none; /* Remove o contorno */
@@ -73,157 +96,150 @@
     padding: 5px 10px; /* Padding interno */
     display: flex; /* Alinha o conteúdo */
     align-items: center; /* Alinha verticalmente o conteúdo */
+    margin: 0 5px; /* Espaçamento */
 }
 
-/* Estilo quando o botão está em hover */
 .select-display:hover {
-    background-color: black; /* Cor de fundo em hover */
-    color: white; /* Cor do texto em hover */
+    background-color: black;
+    color: white;
+    padding: 20px;
 }
 
-/* Estilo quando o botão está ativo (clicado) */
 .select-display.active {
-    background-color: black; /* Cor de fundo ativa */
-    color: white; /* Cor do texto ativa */
+    background-color: black;
+    color: white;
+    padding: 20px;
 }
 
-/* Estilo do ícone dentro do botão */
-.select-display.active::after, /* Quando o botão estiver ativo */
-.select-display:hover::after, /* Quando o botão estiver em hover */
-.setaprabaixo:hover { /* Quando o ícone estiver em hover */
-    color: white; /* Cor do ícone */
+
+.select-display.active::after,
+.select-display:hover::after,
+.setaprabaixo:hover { 
+    color: white;
 }
 
-/* Estilo quando o botão está ativo e o ícone deve girar */
 .select-display.active .setaprabaixo {
-    transform: rotate(180deg); /* Rotaciona a seta para cima */
+    transform: rotate(180deg);
 }
 
-/* Estilo do botão personalizado */
 .select-button:hover,
 .select-button:focus {
-    background-color: #31312F; /* Cor de fundo em hover/focus */
-    color: white; /* Cor do texto em hover/focus */
-    outline: none; /* Remove o contorno */
-    border: none; /* Remove a borda */
+    background-color: #31312F;
+    color: white;
+    outline: none;
+    border: none;
 }
 
 .select-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
     color: black;
     border: none;
-    outline: none;
-    box-shadow: none;
     font-size: 17px;
-    cursor: pointer;
     padding: 5px 10px;
+    cursor: pointer;
     display: none;
 }
 
-body {
-    margin: 0; /* Remove a margem padrão do corpo */
-    padding: 0; /* Remove o padding padrão do corpo */
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    color: white;
-    font-family: "Anton", sans-serif;
-    font-size: 13px;
-    width: 100%;
-    padding-bottom: 0px;
-    margin-left: 360px;
-}
-
-.search-container{
+.search-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 350px; /* Ajusta o tamanho da barra de pesquisa */
+    transition: width 0.3s ease;
+    width: 300px;
+    z-index: 2;
 }
 
 #search-bar {
-    width: 330px;
+    width: 100%;
     height: 40px;
-    border: none;
-    font-size: 17px;
-    padding-right: 10px;
-    padding-left: 10px;
     border: 1px double black;
+    border-radius: 2px;
+    padding: 0 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
 #search-bar:focus {
     outline: none;
-    width: 350px;
-    border: #000 1px double;
-    padding-right: 10px;
-    padding-left: 10px;
+    width: 450px;
+    position: absolute;
     box-shadow: 0 0 0 2px #668CFF;
-    margin-left: 30px;
+    border: #000 1px double;
+    left: 0;
+    z-index: 3;
 }
 
-
-.nav-home{
+.nav-home {
     display: flex;
-    align-items:center;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     list-style-type: none;
     z-index: 1000;
     position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
     margin: 0;
 }
 
-
-#link_login, #carrinho_site, .button-cadastro {
-    margin: 0 3px; /* Adiciona margem mínima entre os itens */
+.nav-home.hidden {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#ellipse_cart{
-    font-size: 23px;
+#link_login, #carrinho_site, .button-cadastro {
+    margin: 0;
+}
+
+#ellipse_cart {
+    font-size: 20px;
     color: red;
-    position: absolute;
-    top: 10px;
     right: 190px;
-    display: none;
 }
 
 #cart_count {
-  position: absolute;
-  top: 13px;
-  right: 198px;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  display: none;
+    color: white;
+    font-size: 15px;
+    display: none;
+    right: 196px;
+}
+
+#ellipse_cart, #cart_count {
+    position: absolute; /* Fixar esses elementos dentro do botão */
+    top: 75%; /* Posiciona verticalmente ao centro */
+    transform: translateY(-50%); /* Ajusta para alinhar verticalmente */
 }
 
 .button-nav {
-    background-color: #31312F;
-    display: relative;
-    width: 10px;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     cursor: pointer;
+    padding: 8px 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.hidden-buttons{
+.button-nav:hover {
+    background-color: black; /* Cor de fundo em hover */
+    color: white; /* Cor do texto em hover */
+    padding: 21px;
+}
+
+.hidden-buttons {
     display: none;
 }
 
-.search-container{
-  width: 490px;
-  display: block;
+.search-container:focus-within ~ .nav-home .select-display,
+.search-container:focus-within ~ .nav-home .button-nav {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .genres-header {
@@ -234,7 +250,7 @@ body {
     padding: 15px;
 }
 
-.column{
+.column {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -242,82 +258,81 @@ body {
 
 .columns-container {
     display: flex;
-    justify-content: center; /* Centraliza as colunas horizontalmente */
-    gap: 3px; /* Espaçamento entre as colunas */
+    justify-content: center;
+    gap: 20px;
 }
 
 .select-items {
-    display: none; /* Oculta o dropdown por padrão */
-    position: absolute; /* Posiciona o dropdown em relação ao elemento pai */
+    display: none;
+    position: absolute;
     background-color: black;
-    border: 1px solid #444; /* Adiciona uma borda sutil ao dropdown */
-    border-radius: 4px; /* Adiciona bordas arredondadas ao dropdown */
-    z-index: 1000; /* Garante que o dropdown fique sobre outros elementos */
-    top: 100%; /* Posiciona o dropdown abaixo do botão */
-    left: 0; /* Alinha o dropdown com o botão */
+    border: 1px solid #444;
+    border-radius: 4px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
 }
 
 .select-items .item {
-    padding: 10px 15px; /* Ajusta o padding dos itens do dropdown */
+    padding: 8px 15px;
     color: white;
     cursor: pointer;
 }
 
 .select-items.show {
-    display: block; /* Mostra o dropdown quando a classe show está presente */
+    display: block;
 }
 
-.button-nav:hover{
+.button-nav:hover {
     background-color: black;
     color: white;
-    cursor: pointer;
-    text-align: center;
-    display: relative;
 }
 
-a .button-cadastro{
+a .button-cadastro {
     text-decoration: none;
 }
 
 li a {
-    text-decoration: none; /* Remove o sublinhado de todos os links dentro da lista */
+    text-decoration: none;
 }
 
 a .button-cadastro, .button-cadastro {
-    text-decoration: none; /* Garante que o sublinhado seja removido especificamente para o botão */
+    text-decoration: none;
 }
 
 #carrinho_site {
-    color: white;
+    color: black;
     font-size: 28px;
     cursor: pointer;
     text-align: center;
-    display: relative;
 }
 
 #carrinho_site:hover {
     background-color: black;
     color: white;
+    padding: 14px;
 }
 
 .button-cadastro {
     background-color: #F5DF2E;
     color: #000000;
-    padding: 8px 12px;
+    padding: 14px 22px;
     border: none;
-    border-radius: 5px;
-    font-family: Helvetica;
+    border-radius: 2px;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    text-decoration: none;
+    box-sizing: border-box;
     cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    min-height: 30px;
 }
 
 #link_login {
-    color: white;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
+    color: black;
     text-decoration: none;
     font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #link_login:hover {
@@ -325,19 +340,90 @@ a .button-cadastro, .button-cadastro {
     color: white;
     cursor: pointer;
     text-decoration: none;
-    text-align: center;
-    display: relative;
+    padding: 20px;
 }
 
+.custom-select {
+    position: relative;
+}
 
-/*.img-header{
-    width: 60px;
-    margin-left: 300px;
-    padding-right: 8px;
+.custom-select:hover .select-items {
+    display: none;
+}
+
+.setaprabaixo {
+    font-size: 13px;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+.select-items {
+    display: none;
+    position: absolute;
+    background-color: black;
     color: white;
-    align-items: center;
-    box-sizing: border-box;
-}*/
+    border: none;
+    min-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.select-items.show {
+    display: flex;
+}
+
+.select-items .column {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.select-items .item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.select-items .item:hover {
+    text-decoration: underline;
+    color: #4DD2FF;
+}
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Base styles */
+.search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.genres-header {
+  display: none; 
+}
+
+.genres-header.show {
+  display: block;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
 
 .banner-header{
     position: relative;
@@ -396,7 +482,7 @@ a .button-cadastro, .button-cadastro {
     padding-top: 15px;
 }
 
-a, h2{
+.banner-mid-text a, h2{
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
     text-align: center;
@@ -405,7 +491,8 @@ a, h2{
     padding-top: 70px;
 }
 
-a:hover, h2:hover{
+
+.banner-mid-text a:hover, h2:hover{
     color: #4DD2FF;
     text-decoration: underline;
 }
@@ -693,8 +780,6 @@ h5{
     margin-left: 1080px;
 }
 
-
-
 .custom-select {
     position: relative; /* Necessário para o dropdown */
 }
@@ -898,4 +983,12 @@ h5{
     vertical-align: baseline;
     overflow: visible;
     display: inline-block;
+}
+
+#markdown-content {
+    display: none; /* Ocultar o conteúdo inicialmente */
+}
+
+#ellipse_cart, #cart_count {
+    display: none;
 }
