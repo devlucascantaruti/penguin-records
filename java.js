@@ -1,57 +1,84 @@
-// Função para alternar a exibição do dropdown e o estado do botão
-document.querySelector('.select-display').addEventListener('click', function(event) {
+function toggleDropdown() {
+  var dropdownContent = document.getElementById("markdown-content");
+  if (dropdownContent.classList.contains("hidden")) {
+    dropdownContent.classList.remove("hidden");
+    dropdownContent.style.display = "block";
+  } else {
+    dropdownContent.classList.add("hidden");
+    dropdownContent.style.display = "none";
+  }
+}
+
+document
+  .querySelector(".select-display")
+  .addEventListener("click", function (event) {
     var dropdown = this.nextElementSibling;
-    var isVisible = dropdown.classList.contains('show');
+    var isVisible = dropdown.classList.contains("show");
 
-    dropdown.classList.toggle('show', !isVisible);
-    this.classList.toggle('active', !isVisible);
+    dropdown.classList.toggle("show", !isVisible);
+    this.classList.toggle("active", !isVisible);
 
-    event.stopPropagation();
-});
-
-document.addEventListener('click', function(event) {
-    var dropdown = document.querySelector('.select-items');
-    var display = document.querySelector('.select-display');
-
-    if (!dropdown.contains(event.target) && !display.contains(event.target)) {
-        dropdown.classList.remove('show'); 
-        display.classList.remove('active');
+    var icon = this.querySelector(".setaprabaixo");
+    if (isVisible) {
+      icon.setAttribute("name", "caret-down");
+    } else {
+      icon.setAttribute("name", "caret-up");
     }
+
+    toggleDropdown(); // Exibe ou esconde o markdown quando o botão é clicado
+    event.stopPropagation(); // Impede que o clique se propague para o document
+  });
+
+document.addEventListener("click", function (event) {
+  var dropdown = document.querySelector(".select-items");
+  var display = document.querySelector(".select-display");
+  var markdownContent = document.getElementById("markdown-content");
+
+  if (
+    !dropdown.contains(event.target) &&
+    !display.contains(event.target) &&
+    !markdownContent.contains(event.target)
+  ) {
+    dropdown.classList.remove("show");
+    display.classList.remove("active");
+    var icon = display.querySelector(".setaprabaixo");
+    icon.setAttribute("name", "caret-down");
+  }
 });
 
+document.querySelectorAll(".select-items .item").forEach(function (item) {
+  item.addEventListener("click", function (event) {
+    event.preventDefault();
+    var url = this.getAttribute("data-url");
+    var dropdown = this.closest(".select-items");
+F
+    dropdown.classList.remove("show");
+    document.querySelector(".select-display").classList.remove("active");
 
-document.querySelectorAll('.select-items .item').forEach(function(item) {
-    item.addEventListener('click', function(event) {
-        event.preventDefault(); // Evita o comportamento padrão do link
-        var url = this.getAttribute('data-url'); // Obtém a URL do atributo data-url
-        var dropdown = this.closest('.select-items');
-
-        dropdown.classList.remove('show'); // Fecha o dropdown
-        document.querySelector('.select-display').classList.remove('active'); // Remove a classe ativa do botão
-
-        if (url) {
-            window.location.href = url; // Redireciona para a URL
-        }
-    });
+    if (url) {
+      window.location.href = url;
+    }
+  });
 });
-
 
 // Seleciona o campo de pesquisa e os botões que devem ser escondidos
-const searchBar = document.getElementById('search-bar');
-const buttonsToHide = document.querySelectorAll('.nav-home .custom-select, .button-nav, .select-display');
+const searchBar = document.getElementById("search-bar");
+const buttonsToHide = document.querySelectorAll(
+  ".nav-home .custom-select, .button-nav, .select-display"
+);
 
 // Adiciona um evento de foco à barra de pesquisa
-searchBar.addEventListener('focus', function() {
-    buttonsToHide.forEach(button => {
-        button.classList.add('hidden-buttons');
-    });
+searchBar.addEventListener("focus", function () {
+  buttonsToHide.forEach((button) => {
+    button.classList.add("hidden-buttons");
+  });
 });
 
 // Adiciona um evento de desfoco à barra de pesquisa
-searchBar.addEventListener('blur', function() {
-    buttonsToHide.forEach(button => {
-        button.classList.remove('hidden-buttons');
-    });
+searchBar.addEventListener("blur", function () {
+  buttonsToHide.forEach((button) => {
+    button.classList.remove("hidden-buttons");
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -83,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
@@ -147,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCarousel();
 });
 
- //API do Youtube para o vídeo 
+//API do Youtube para o vídeo
 
 document.addEventListener("DOMContentLoaded", function () {
   const playlistId = "PLsAZ9VYSyO13Wp5GD8wM5OYtfMV0sck46";
@@ -180,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Adiciona item à lista
         const listItem = document.createElement("li");
         listItem.classList.add("video-thumbnail");
-        listItem.innerHTML = `
+        listItem.innerHTML = `  
                             <a href="#" data-video-id="${videoId}">
                                 <img src="${videoThumbnail}" alt="${videoTitle}" width="120" height="90">
                                 ${videoTitle}
@@ -213,14 +239,14 @@ document.addEventListener("DOMContentLoaded", function () {
   loadPlaylist();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const username = localStorage.getItem('username');
+document.addEventListener("DOMContentLoaded", function () {
+  const username = localStorage.getItem("username");
 
-    if (username) {
-        const cadastroButton = document.querySelector('.button-cadastro');
+  if (username) {
+    const cadastroButton = document.querySelector(".button-cadastro");
 
-        if (cadastroButton) {
-            cadastroButton.textContent = `${username}`;
-        }
+    if (cadastroButton) {
+      cadastroButton.textContent = `${username}`;
     }
+  }
 });

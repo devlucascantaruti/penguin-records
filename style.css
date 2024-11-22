@@ -51,7 +51,7 @@ body {
 }
 
 .header .nav-home.hide {
-    opacity: 0; /* Esconde os itens de navegação */
+    visibility: hidden; /* Esconde os itens de navegação */
     pointer-events: none; /* Impede a interação com os itens quando ocultos */
 }
 
@@ -116,11 +116,9 @@ body {
 .select-display:hover::after,
 .setaprabaixo:hover { 
     color: white;
+    background-color: black;
 }
 
-.select-display.active .setaprabaixo {
-    transform: rotate(180deg);
-}
 
 .select-button:hover,
 .select-button:focus {
@@ -183,7 +181,7 @@ body {
 }
 
 .nav-home.hidden {
-    opacity: 0;
+    visibility: hidden;
     display: none;
     visibility: hidden;
     pointer-events: none;
@@ -238,39 +236,55 @@ body {
 
 .search-container:focus-within ~ .nav-home .select-display,
 .search-container:focus-within ~ .nav-home .button-nav {
-    opacity: 0;
+    visibility: hidden;
     pointer-events: none;
 }
 
-.genres-header {
-    display: relative;
-    position: fixed;
-    color: white;
-    font-weight: bold;
-    padding: 15px;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.item-genres{
+    position: absolute;
+    top: 15px;
+    padding-left: 14px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .columns-container {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between; /* Espaçamento entre as colunas */
+    gap: 5px; /* Ajusta o espaçamento entre as colunas */
 }
+
+    /* Define que cada coluna deve ocupar espaço de forma igual */
+.column {
+    display: flex;
+    flex-direction: column; /* Coloca os itens na vertical dentro da coluna */
+    flex: 1; /* As colunas irão dividir igualmente o espaço disponível */
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: #6286f5;
+    text-decoration: underline;
+}
+
 
 .select-items {
     display: none;
-    position: absolute;
-    background-color: black;
-    border: 1px solid #444;
-    border-radius: 4px;
     z-index: 1000;
     top: 100%;
     left: 0;
+    position: absolute;
+    background-color: black;
+    color: white;
+    border: none;
+    min-width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .select-items .item {
@@ -357,17 +371,7 @@ a .button-cadastro, .button-cadastro {
     cursor: pointer;
 }
 
-.select-items {
-    display: none;
-    position: absolute;
-    background-color: black;
-    color: white;
-    border: none;
-    min-width: 300px;
-    font-family: Arial, Helvetica, sans-serif;
-    flex-direction: row;
-    justify-content: center;
-}
+
 
 .select-items.show {
     display: flex;
@@ -382,13 +386,8 @@ a .button-cadastro, .button-cadastro {
 }
 
 .select-items .item {
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
-}
-
-.select-items .item:hover {
-    text-decoration: underline;
-    color: #4DD2FF;
 }
 
 .anton-regular {
@@ -410,13 +409,6 @@ a .button-cadastro, .button-cadastro {
   transition: all 0.3s ease;
 }
 
-.genres-header {
-  display: none; 
-}
-
-.genres-header.show {
-  display: block;
-}
 
 .logo-container {
   display: flex;
@@ -788,7 +780,6 @@ h5{
     display: flex; /* Exibe o dropdown ao passar o mouse */
 }
 
-
 .setaprabaixo{
     font-size: 13px;
     padding-left: 2px;
@@ -813,7 +804,6 @@ h5{
 
 .select-items .column {
     flex: 1;
-    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -822,11 +812,6 @@ h5{
 .select-items .item {
     padding: 8px;
     cursor: pointer;
-}
-
-.select-items .item:hover {
-    text-decoration: underline;
-    color: #4DD2FF;
 }
 
 .anton-regular {
@@ -986,7 +971,7 @@ h5{
 }
 
 #markdown-content {
-    display: none; /* Ocultar o conteúdo inicialmente */
+    display: none;
 }
 
 #ellipse_cart, #cart_count {
