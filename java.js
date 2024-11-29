@@ -51,7 +51,6 @@ document.querySelectorAll(".select-items .item").forEach(function (item) {
     event.preventDefault();
     var url = this.getAttribute("data-url");
     var dropdown = this.closest(".select-items");
-F
     dropdown.classList.remove("show");
     document.querySelector(".select-display").classList.remove("active");
 
@@ -111,19 +110,57 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Carrossel de Discos
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
   const nextButton = document.querySelector(".next");
   const sliderContainer = document.querySelector(".slider-container");
-  const slides = sliderContainer.querySelectorAll("li");
 
   let currentIndex = 0;
-  let slideWidth = slides[0].offsetWidth;
   const slideGap = 20;
 
-  let totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
+  // Função para carregar os discos do MongoDB
+  async function loadDisks() {
+    try {
+      const response = await fetch("/api/discos"); // Rota para carregar discos
+      if (!response.ok) {
+        throw new Error("Erro ao carregar discos");
+      }
+      const discos = await response.json();
+      const slides = discos
+        .map((disco) => {
+          return `
+          <li class="slide">
+            <div class="album-info">
+              <h3>${disco.albumTitle}</h3>
+              <span class="artist-name">${disco.artistName}</span>
+              <p>${disco.year}</p>
+              <p>${disco.genre}</p>
+              <p>${disco.type}</p>
+              <p>${disco.copies} copies from $${disco.price}</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+            </div>
+          </li>
+        `;
+        })
+        .join("");
 
+      // Atualiza os slides do carrossel com os discos
+      sliderContainer.innerHTML = slides;
+      updateCarousel();
+    } catch (error) {
+      console.error("Erro ao carregar discos:", error);
+    }
+  }
+
+  // Função para atualizar o carrossel
   function updateCarousel() {
+    const slides = sliderContainer.querySelectorAll("li");
+    const slideWidth = slides[0].offsetWidth;
+    const totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
     const containerWidth = sliderContainer.parentElement.offsetWidth;
     const maxTranslateX = totalWidth - containerWidth;
 
@@ -133,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
       currentIndex = Math.floor(maxTranslateX / (slideWidth + slideGap));
     }
 
-    // Aplica a transição de deslocamento (translateX) ao carrossel
     sliderContainer.style.transform = `translateX(-${
       currentIndex * (slideWidth + slideGap)
     }px)`;
@@ -148,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentIndex * (slideWidth + slideGap) >= maxTranslateX ? "0.5" : "1";
   }
 
-  // Evento de clique no botão "Anterior"
+  // Eventos de clique nos botões de navegação
   prevButton.addEventListener("click", function () {
     if (currentIndex > 0) {
       currentIndex--;
@@ -156,7 +192,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Evento de clique no botão "Próximo"
   nextButton.addEventListener("click", function () {
     currentIndex++;
     updateCarousel();
@@ -164,17 +199,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Recalcula a largura dos slides ao redimensionar a janela
   window.addEventListener("resize", function () {
-    slideWidth = slides[0].offsetWidth;
-    totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
     updateCarousel();
   });
 
-  // Inicializar o carrossel
-  updateCarousel();
+  // Carrega os discos ao iniciar
+  loadDisks();
 });
 
 //API do Youtube para o vídeo
-
 document.addEventListener("DOMContentLoaded", function () {
   const playlistId = "PLsAZ9VYSyO13Wp5GD8wM5OYtfMV0sck46";
   const apiUrl = `/api/youtube/playlist?playlistId=${playlistId}`;
@@ -222,20 +254,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Configura o evento de clique para mudar o vídeo
       videoListContainer.addEventListener("click", (event) => {
-        if (event.target.tagName === "A" || event.target.tagName === "IMG") {
-          event.preventDefault();
-          const videoId = event.target
-            .closest("a")
-            .getAttribute("data-video-id");
-          videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`; // ?autoplay=1 para iniciar automaticamente
+        if (event.target.tagName === "A") {
+          const videoId = event.target.getAttribute("data-video-id");
+          videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
         }
       });
     } catch (error) {
-      console.error("Error loading playlist:", error);
+      console.error("Erro ao carregar playlist:", error);
     }
   }
 
-  // Carrega a playlist ao iniciar
   loadPlaylist();
 });
 

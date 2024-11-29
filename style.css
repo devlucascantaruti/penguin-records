@@ -250,15 +250,14 @@ body {
 
 .columns-container {
     display: flex;
-    justify-content: space-between; /* Espaçamento entre as colunas */
-    gap: 5px; /* Ajusta o espaçamento entre as colunas */
+    justify-content: space-between;
+    gap: 5px;
 }
 
-    /* Define que cada coluna deve ocupar espaço de forma igual */
 .column {
     display: flex;
-    flex-direction: column; /* Coloca os itens na vertical dentro da coluna */
-    flex: 1; /* As colunas irão dividir igualmente o espaço disponível */
+    flex-direction: column;
+    flex: 1;
 }
 
 .item a {
@@ -452,7 +451,7 @@ a .button-cadastro, .button-cadastro {
 
 .banner-mid-text {
     position: absolute;
-    top: 70%;
+    top: 68%;
     bottom: 20%;
     left: 60%;
     right: 60%;
@@ -463,9 +462,9 @@ a .button-cadastro, .button-cadastro {
     margin-bottom: 10px;
     margin-left: 20px;
     line-height: 1.5;
-    transform: translate(-50%, -50%); /* Centraliza o texto */
-    color: white; /* Cor do texto */
-    font-size: 12px; /* Tamanho do texto, ajuste conforme necessário */
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
     align-content: center;
     font-family: Arial, Helvetica, sans-serif;
 }
