@@ -80,7 +80,7 @@ app.post("/api/adicionarDiscos", async (req, res) => {
   const discos = [
     {
       imagem: "public/images/disco18.jpg",
-      titulo: "Oasis",
+      titulo: "Definitely Maybe",
       artista: "Oasis",
       ano: 1994,
       genero: "Rock",
@@ -91,7 +91,7 @@ app.post("/api/adicionarDiscos", async (req, res) => {
     },
     {
       imagem: "public/images/disco23.jpg",
-      titulo: "A Tribe Called Quest",
+      titulo: "The Low End Theory",
       artista: "A Tribe Called Quest",
       ano: 1990,
       genero: "Hip Hop",
@@ -190,6 +190,19 @@ app.post("/api/adicionarDiscos", async (req, res) => {
   } catch (error) {
     console.error("Erro ao adicionar discos:", error);
     res.status(500).json({ error: "Erro ao adicionar discos" });
+  }
+});
+
+// Rota para obter um disco específico
+app.get("/api/discos/:id", async (req, res) => {
+  try {
+    const disco = await Disco.findById(req.params.id);
+    if (!disco) {
+      return res.status(404).json({ error: "Disco não encontrado" });
+    }
+    res.json(disco); // Retorna as informações do disco
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar disco" });
   }
 });
 

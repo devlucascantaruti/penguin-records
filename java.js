@@ -80,35 +80,7 @@ searchBar.addEventListener("blur", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  let count = 0;
-  const shopButtons = document.querySelectorAll(".shop-button"); // Seleciona todos os botões
-  const ellipseCart = document.getElementById("ellipse_cart");
-  const cartCount = document.getElementById("cart_count");
 
-  shopButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (count === 0) {
-        ellipseCart.style.display = "inline";
-        cartCount.style.display = "flex";
-      }
-      count++;
-      cartCount.textContent = count;
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const wantButtons = document.querySelectorAll(".want-button"); // Seleciona todos os botões com a classe want-button
-
-  wantButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault(); // Previne a ação padrão do botão
-      window.location.href = "login.html"; // Substitua pelo URL da página para onde deseja redirecionar
-    });
-  });
-});
 
 // Carrossel de Discos
 document.addEventListener("DOMContentLoaded", function () {
@@ -128,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       const discos = await response.json();
 
-       console.log(discos);
+      console.log(discos);
 
       const slides = discos
         .map((disco) => {
@@ -152,15 +124,43 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .join("");
 
-      // Atualiza os slides do carrossel com os discos
       sliderContainer.innerHTML = slides;
       updateCarousel();
+
+
+
+      const shopButtons = document.querySelectorAll(".shop-button");
+      shopButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const discoInfo = {
+            imagem: event.target.closest("li").querySelector(".album-image")
+              .src,
+            titulo: event.target.closest("li").querySelector("h3").textContent,
+            artista: event.target.closest("li").querySelector(".artist-name").textContent,
+            ano: parseInt(event.target.closest("li").querySelector("p:nth-of-type(1)").textContent),
+            genero: event.target.closest("li").querySelector("p:nth-of-type(2)").textContent,
+            tipo: event.target.closest("li").querySelector("p:nth-of-type(3)").textContent,
+          };
+
+          // Armazena as informações do disco no localStorage
+          localStorage.setItem("discoInfo", JSON.stringify(discoInfo));
+
+          // Redireciona para a página carrinho.html em uma nova aba
+          window.open("carrinho.html", "_blank");
+        });
+      });
+
+          const wantButtons = document.querySelectorAll(".want-button");
+          wantButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              window.location.href = "login.html";
+            });
+          });
+
     } catch (error) {
       console.error("Erro ao carregar discos:", error);
     }
   }
-
-  // Função para atualizar o carrossel
   function updateCarousel() {
     const slides = sliderContainer.querySelectorAll("li");
     const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
@@ -169,8 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const maxTranslateX = totalWidth - containerWidth;
 
     sliderContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-
-    // Limitar o índice do carrossel para não ultrapassar os limites
     if (currentIndex < 0) currentIndex = 0;
     if (currentIndex * (slideWidth + slideGap) > maxTranslateX) {
       currentIndex = Math.floor(maxTranslateX / (slideWidth + slideWidth));
@@ -284,3 +282,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+
