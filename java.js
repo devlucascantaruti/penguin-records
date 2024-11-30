@@ -117,27 +117,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const sliderContainer = document.querySelector(".slider-container");
 
   let currentIndex = 0;
-  const slideGap = 20;
+  const slideGap = 22.5;
 
   // Função para carregar os discos do MongoDB
   async function loadDisks() {
     try {
-      const response = await fetch("/api/discos"); // Rota para carregar discos
+      const response = await fetch("http://localhost:5000/api/discos"); // Rota para carregar discos
       if (!response.ok) {
         throw new Error("Erro ao carregar discos");
       }
       const discos = await response.json();
+
+       console.log(discos);
+
       const slides = discos
         .map((disco) => {
           return `
           <li class="slide">
             <div class="album-info">
-              <h3>${disco.albumTitle}</h3>
-              <span class="artist-name">${disco.artistName}</span>
-              <p>${disco.year}</p>
-              <p>${disco.genre}</p>
-              <p>${disco.type}</p>
-              <p>${disco.copies} copies from $${disco.price}</p>
+              <img src="${disco.imagem}" alt="${disco.albumTitle}" class="album-image">
+              <h3>${disco.titulo}</h3>
+              <span class="artist-name">${disco.artista}</span>
+              <p>${disco.ano}</p>
+              <p>${disco.genero}</p>
+              <p>${disco.tipo}</p>
+              <p>${disco.copias} copies from $${disco.preco}</p>
             </div>
             <div class="album-buttons">
               <button class="shop-button">Shop</button>
@@ -159,15 +163,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para atualizar o carrossel
   function updateCarousel() {
     const slides = sliderContainer.querySelectorAll("li");
-    const slideWidth = slides[0].offsetWidth;
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
     const totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
     const containerWidth = sliderContainer.parentElement.offsetWidth;
     const maxTranslateX = totalWidth - containerWidth;
 
+    sliderContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
     // Limitar o índice do carrossel para não ultrapassar os limites
     if (currentIndex < 0) currentIndex = 0;
     if (currentIndex * (slideWidth + slideGap) > maxTranslateX) {
-      currentIndex = Math.floor(maxTranslateX / (slideWidth + slideGap));
+      currentIndex = Math.floor(maxTranslateX / (slideWidth + slideWidth));
     }
 
     sliderContainer.style.transform = `translateX(-${

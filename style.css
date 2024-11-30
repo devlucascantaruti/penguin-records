@@ -514,13 +514,6 @@ a .button-cadastro, .button-cadastro {
     box-sizing: border-box;
 }
 
-.containers-mid{
-    display: relative;
-    justify-content:center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 .carrossel {
   position: relative;
   width: 100%;
@@ -533,15 +526,11 @@ a .button-cadastro, .button-cadastro {
   display: flex;
   transition: transform 0.5s ease;
   padding: 0;
+  margin: 0;
   list-style: none;
-  width: 100%;
-  gap: 20px; /* Espaçamento entre os slides, ajuste conforme necessário */
-}
-
-.slide {
-  min-width: 100%;
   box-sizing: border-box;
-  padding: 20px;
+  width: 100%;
+  gap: 20px;
 }
 
 .carrossel-buttons {
@@ -574,37 +563,39 @@ button.next {
 
 .mid-content{
     display: flex;
-    justify-content: center;
     margin: 120px 0;
     width: 100%;
+    padding: 0;
 }
 
 .album-info {
-    margin: 10px 0;
-    text-align: left; /* Centraliza o texto */
-    padding-left: 15px;
+    text-align: left;
     padding-top: 10px;
 }
 
 .album-info h3 {
     font-size: 16px;
     font-weight: 550;
-    margin: 1px 0;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
+    padding-left: 8px;
 }
 
 .album-info p {
-    font-size: 12px;
-    margin: 2px 0;
+    font-size: 11px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
+    margin-top: 15px;
+    line-height: 0;
+    color: #7d7c79;
+    padding-left: 8px;
 }
 
 .artist-name{
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
+    padding-left: 8px;
 }
 
 .album-buttons {
@@ -622,19 +613,20 @@ button.next {
     }
 }
 
+
 .shop-button,
 .want-button {
-    padding: 5px 24px;
+    padding: 5px 10px;
     border: 1px solid #000;
     background-color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     flex: 1;
-    margin: 0 5px; /* Adiciona espaçamento entre os botões */
+    margin: 0 5px;
 }
 
 .shop-button:hover,
@@ -646,18 +638,18 @@ button.next {
 
 
 .album-image {
-    width: 250px;  /* Largura fixa */
-    height: 250px; /* Altura fixa */
-    object-fit: cover; /* Ajusta a imagem para preencher o container */
-    margin-bottom: -10px;
+    width: 238px;  
+    height: 242px;
+    object-fit: cover;
+    margin-bottom: 5px;
     position: relative;
-    align-items: center;
-  }
+    object-fit: cover;
+    margin-top: -10px;
+}
 
-
-#slide1, #slide2, #slide3, #slide4, #slide5, #slide6, #slide7, #slide8, #slide9, #slide10, #slide11, #slide12, #slide13, #slide14, #slide15, #slide16, #slide17, #slide18{
-    width: 250px;
-    min-height: 100%;
+.slide{
+    width: calc(100% - 20px);
+    box-sizing: border-box;
     object-fit: cover;
     background-color: white;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), 

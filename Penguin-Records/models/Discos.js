@@ -1,4 +1,3 @@
-// models/Disco.js
 const mongoose = require("mongoose");
 
 // Definindo o esquema do disco
