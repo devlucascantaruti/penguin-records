@@ -23,3 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
     leftContainer.innerHTML = "<p>Não há discos no carrinho.</p>";
   }
 });
+
+  const slider = document.getElementById("preco-slider");
+  const display = document.getElementById("preco-display");
+
+  slider.addEventListener("input", function () {
+    const precoFormatado = `R$ ${parseFloat(slider.value)
+      .toFixed(2)
+      .replace(".", ",")}`;
+    display.textContent = precoFormatado;
+  });

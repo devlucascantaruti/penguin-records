@@ -873,10 +873,9 @@ h5{
     position: relative;
     width: 100%;
     margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
-    bottom: 0; /* Alinha ao fundo se for fixed */
+    bottom: 20px; /* Alinha ao fundo se for fixed */
     left: 0;
     right: 0;
-    margin: 0;
     padding: 0px 2px 2px 2px; /* Espaçamento interno do menu */
     text-align: center;
     font-family: Helvetica, sans-serif;
@@ -907,14 +906,14 @@ h5{
 
  #nav_footer ul {
     list-style-type: none;
-    padding: 15px;
-    padding-bottom: 0%;
+    padding: 10px 15px;
+    margin-top: -10px;
     display: float;
     justify-content: space-around;
 }
 
 #nav_footer ul li {
-    margin: 15px; /* Espaçamento entre os links */
+    margin: 10px; /* Espaçamento entre os links */
     display: inline;
 }
 

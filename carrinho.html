@@ -11,10 +11,9 @@
   <link rel="icon-site" type="image/png" href="src/img/logo3-_2_.ico">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="java-carrinho.js"></script>
   <link rel="stylesheet" href="carrinho.css">
-
 </head>
+
 <body id="carrinho-site">   
   <div class="header">
     <div class="logo-container">
@@ -211,8 +210,151 @@ c-38 10 -73 18 -77 18 -5 1 -8 6 -8 11 0 14 265 13 291 0 10 -6 32 -37 48 -69
         <h3 class="titulos-filtro">
         Preço
         </h3>
-        <span class="preco">R$ 0,00</span>
+        <span class="preco" id="preco-display">R$ 0,00</span><br>
+        <input type="range" id="preco-slider" min="0" max="10000" step="100" value="0">
+        <br>
+        <button class="button-submit">Aplicar</button>
         </div>
+    </div>
+
+    <div class="middle-main-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Classificar por: Listado, Condição, Artista, Título, Selo</th>
+                    <th>Vendedor</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>Noah Kahan - Town Hall</strong><br>
+                        Condição da Mídia: <span>Mint (M)</span><br>
+                        Condição da Capa: <span>Mint (M)</span><br>
+                        RSDCA #OfficialRSDRecordStore Brand New Sealed
+                    </td>
+                    <td>
+                        HighNotesCo<br>
+                        <span class="rating">⭐ 92.7%</span><br>
+                        Enviado de: <span>Brasil</span>
+                    </td>
+                    <td>
+                        <span class="price">R$203,67</span><br>
+                        cerca de CA$46,82<br>
+                        <span class="status">Indisponível em: China</span>
+                    </td>
+                </tr>
+                <td>
+                        <strong>Noah Kahan - Town Hall</strong><br>
+                        Condição da Mídia: <span>Mint (M)</span><br>
+                        Condição da Capa: <span>Mint (M)</span><br>
+                        RSDCA #OfficialRSDRecordStore Brand New Sealed
+                    </td>
+                    <td>
+                        HighNotesCo<br>
+                        <span class="rating">⭐ 99.7%</span><br>
+                        Enviado de: <span>Canadá</span>
+                    </td>
+                    <td>
+                        <span class="price">CA$46,82</span><br>
+                        cerca de R$203,67<br>
+                        <span class="status">Indisponível em: Brazil</span>
+                    </td>
+                <tr>
+                         <td>
+                        <strong>Noah Kahan - Town Hall</strong><br>
+                        Condição da Mídia: <span>Mint (M)</span><br>
+                        Condição da Capa: <span>Mint (M)</span><br>
+                        RSDCA #OfficialRSDRecordStore Brand New Sealed
+                    </td>
+                    <td>
+                        HighNotesCo<br>
+                        <span class="rating">⭐ 99.7%</span><br>
+                        Enviado de: <span>Canadá</span>
+                    </td>
+                    <td>
+                        <span class="price">CA$46,82</span><br>
+                        cerca de R$203,67<br>
+                        <span class="status">Indisponível em: Brazil</span>
+                    </td>
+                </tr>
+                     <td>
+                        <strong>Noah Kahan - Town Hall</strong><br>
+                        Condição da Mídia: <span>Mint (M)</span><br>
+                        Condição da Capa: <span>Mint (M)</span><br>
+                        RSDCA #OfficialRSDRecordStore Brand New Sealed
+                    </td>
+                    <td>
+                        HighNotesCo<br>
+                        <span class="rating">⭐ 99.7%</span><br>
+                        Enviado de: <span>Canadá</span>
+                    </td>
+                    <td>
+                        <span class="price">CA$46,82</span><br>
+                        cerca de R$203,67<br>
+                        <span class="status">Indisponível em: Brazil</span>
+                    </td>
+                    <tr>
+                             <td>
+                        <strong>Noah Kahan - Town Hall</strong><br>
+                        Condição da Mídia: <span>Mint (M)</span><br>
+                        Condição da Capa: <span>Mint (M)</span><br>
+                        RSDCA #OfficialRSDRecordStore Brand New Sealed
+                    </td>
+                    <td>
+                        HighNotesCo<br>
+                        <span class="rating">⭐ 89.4%</span><br>
+                        Enviado de: <span>Canadá</span>
+                    </td>
+                    <td>
+                        <span class="price">CA$46,82</span><br>
+                        cerca de R$203,67<br>
+                        <span class="status">Indisponível em: Brazil</span>
+                    </td>
+                    </tr>
+                         <td>
+                        <strong>Noah Kahan - Town Hall</strong><br>
+                        Condição da Mídia: <span>Mint (M)</span><br>
+                        Condição da Capa: <span>Mint (M)</span><br>
+                        RSDCA #OfficialRSDRecordStore Brand New Sealed
+                    </td>
+                    <td>
+                        HighNotesCo<br>
+                        <span class="rating">⭐ 90.9%</span><br>
+                        Enviado de: <span>Canadá</span>
+                    </td>
+                    <td>
+                        <span class="price">CA$46,82</span><br>
+                        cerca de R$203,67<br>
+                        <span class="status">Indisponível em: Japão</span>
+                    </td>
+            </tbody>
+        </table>
+
+        <div class="pagination-controls">
+            <div class="pagination">
+                1 – 25 de 35 &nbsp;
+                <a href="#">Ant.</a> &nbsp;
+                <a href="#" class="current">1</a> &nbsp;
+                <a href="#">2</a> &nbsp;
+                <a href="#">Próxima</a>
+            </div>
+            <div class="filters">
+                <label for="sort">Classificar</label>
+                <select id="sort">
+                    <option>Preço Menor Preço</option>
+                    <option>Preço Maior Preço</option>
+                    <option>Mais Relevante</option>
+                </select>
+                <label for="items-per-page">Mostrar</label>
+                <select id="items-per-page">
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                </select>
+            </div>
+        </div>    
 
     </div>
 
@@ -272,6 +414,7 @@ c-38 10 -73 18 -77 18 -5 1 -8 6 -8 11 0 14 265 13 291 0 10 -6 32 -37 48 -69
 </nav>
 
 <script src="java.js"></script>
+<script src="java-carrinho.js"></script>
 
 </body>
 </html>
