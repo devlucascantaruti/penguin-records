@@ -1,3 +1,7 @@
+document.getElementById("img-logo").addEventListener("click", function () {
+  window.location.href = "index.html";
+});
+
 function toggleDropdown() {
   var dropdownContent = document.getElementById("markdown-content");
   if (dropdownContent.classList.contains("hidden")) {
@@ -25,8 +29,8 @@ document
       icon.setAttribute("name", "caret-up");
     }
 
-    toggleDropdown(); // Exibe ou esconde o markdown quando o botão é clicado
-    event.stopPropagation(); // Impede que o clique se propague para o document
+    toggleDropdown();
+    event.stopPropagation();
   });
 
 document.addEventListener("click", function (event) {
@@ -60,27 +64,22 @@ document.querySelectorAll(".select-items .item").forEach(function (item) {
   });
 });
 
-// Seleciona o campo de pesquisa e os botões que devem ser escondidos
 const searchBar = document.getElementById("search-bar");
 const buttonsToHide = document.querySelectorAll(
   ".nav-home .custom-select, .button-nav, .select-display"
 );
 
-// Adiciona um evento de foco à barra de pesquisa
 searchBar.addEventListener("focus", function () {
   buttonsToHide.forEach((button) => {
     button.classList.add("hidden-buttons");
   });
 });
 
-// Adiciona um evento de desfoco à barra de pesquisa
 searchBar.addEventListener("blur", function () {
   buttonsToHide.forEach((button) => {
     button.classList.remove("hidden-buttons");
   });
 });
-
-
 
 // Carrossel de Discos
 document.addEventListener("DOMContentLoaded", function () {
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para carregar os discos do MongoDB
   async function loadDisks() {
     try {
-      const response = await fetch("http://localhost:5000/api/discos"); // Rota para carregar discos
+      const response = await fetch("http://localhost:5000/api/discos");
       if (!response.ok) {
         throw new Error("Erro ao carregar discos");
       }
@@ -127,8 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
       sliderContainer.innerHTML = slides;
       updateCarousel();
 
-
-
       const shopButtons = document.querySelectorAll(".shop-button");
       shopButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -136,10 +133,16 @@ document.addEventListener("DOMContentLoaded", function () {
             imagem: event.target.closest("li").querySelector(".album-image")
               .src,
             titulo: event.target.closest("li").querySelector("h3").textContent,
-            artista: event.target.closest("li").querySelector(".artist-name").textContent,
-            ano: parseInt(event.target.closest("li").querySelector("p:nth-of-type(1)").textContent),
-            genero: event.target.closest("li").querySelector("p:nth-of-type(2)").textContent,
-            tipo: event.target.closest("li").querySelector("p:nth-of-type(3)").textContent,
+            artista: event.target.closest("li").querySelector(".artist-name")
+              .textContent,
+            ano: parseInt(
+              event.target.closest("li").querySelector("p:nth-of-type(1)")
+                .textContent
+            ),
+            genero: event.target.closest("li").querySelector("p:nth-of-type(2)")
+              .textContent,
+            tipo: event.target.closest("li").querySelector("p:nth-of-type(3)")
+              .textContent,
           };
 
           // Armazena as informações do disco no localStorage
@@ -150,25 +153,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
 
-          const wantButtons = document.querySelectorAll(".want-button");
-          wantButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-              window.location.href = "login.html";
-            });
-          });
-
+      const wantButtons = document.querySelectorAll(".want-button");
+      wantButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          window.location.href = "login.html";
+        });
+      });
     } catch (error) {
       console.error("Erro ao carregar discos:", error);
     }
   }
   function updateCarousel() {
     const slides = sliderContainer.querySelectorAll("li");
-    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
+    const slideWidth =
+      slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
     const totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
     const containerWidth = sliderContainer.parentElement.offsetWidth;
     const maxTranslateX = totalWidth - containerWidth;
 
-    sliderContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    sliderContainer.style.transform = `translateX(-${
+      currentIndex * slideWidth
+    }px)`;
     if (currentIndex < 0) currentIndex = 0;
     if (currentIndex * (slideWidth + slideGap) > maxTranslateX) {
       currentIndex = Math.floor(maxTranslateX / (slideWidth + slideWidth));
@@ -282,5 +287,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
-
-

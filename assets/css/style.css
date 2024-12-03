@@ -9,6 +9,10 @@ body {
     padding: 0;
 }
 
+#img-logo{
+    cursor: pointer;
+}
+
 .header {
     position: relative;
     width: 100%;
@@ -420,7 +424,6 @@ a .button-cadastro, .button-cadastro {
     position: relative;
     display: block;
     width: 100%;
-    max-width: 100%;
     margin: 0px;
     padding: 0;
 }
@@ -434,10 +437,8 @@ a .button-cadastro, .button-cadastro {
 
 .img-banner{
     width: 100%;
-    object-fit: cover;
     display: block;
-    width: 100%;
-    max-width: 100%;
+    height: auto;
     margin: 0px;
     padding: 0;
 }
@@ -451,7 +452,7 @@ a .button-cadastro, .button-cadastro {
 
 .banner-mid-text {
     position: absolute;
-    top: 68%;
+    top: 73%;
     bottom: 20%;
     left: 60%;
     right: 60%;
@@ -507,7 +508,7 @@ a .button-cadastro, .button-cadastro {
 
 .mid-content-text{
     position: absolute;
-    top: 43%;
+    top: 50%;
     left: -28.5%;
     padding-top: 0px;
     text-align: center;
@@ -542,23 +543,23 @@ a .button-cadastro, .button-cadastro {
 }
 
 button.prev, button.next {
-  background-color: transparent; /* Remove o fundo padrão */
+  background-color: transparent;
   border: none;
-  padding: 10px; /* Ajuste o padding conforme necessário */
+  padding: 10px;
   cursor: pointer;
-  background-size: cover; /* Certifica que a imagem cubra todo o botão */
+  background-size: cover;
   background-repeat: no-repeat;
-  width: 25px; /* Ajuste a largura dos botões conforme o tamanho das imagens */
-  height: 25px; /* Ajuste a altura dos botões conforme o tamanho das imagens */
+  width: 25px;
+  height: 25px;
 }
 
 button.prev {
-  background-image: url('src/img/next.png'); /* Corrige o caminho da imagem do botão "prev" */
-  transform: scaleX(-1); /* Espelha a imagem horizontalmente */
+  background-image: url('src/img/next.png');
+  transform: scaleX(-1);
 }
 
 button.next {
-  background-image: url('src/img/next.png'); /* Corrige o caminho da imagem do botão "next" */
+  background-image: url('src/img/next.png');
 }
 
 .mid-content{

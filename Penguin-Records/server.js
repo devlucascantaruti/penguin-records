@@ -182,8 +182,8 @@ app.post("/api/adicionarDiscos", async (req, res) => {
   try {
     for (const disco of discos) {
       const novoDisco = new Disco(disco);
-      console.log(`Tentando adicionar o disco: ${disco.titulo}`); // Log para saber qual disco está sendo adicionado
-      await novoDisco.save(); // Salva cada disco no banco de dados
+      console.log(`Tentando adicionar o disco: ${disco.titulo}`);
+      await novoDisco.save();
     }
 
     res.status(201).json({ message: "Discos adicionados com sucesso!" });
