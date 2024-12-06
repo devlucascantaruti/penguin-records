@@ -1,4 +1,4 @@
-document.getElementById("img-logo").addEventListener("click", function () {
+document.querySelector(".logo").addEventListener("click", function () {
   window.location.href = "index.html";
 });
 
@@ -64,24 +64,28 @@ document.querySelectorAll(".select-items .item").forEach(function (item) {
   });
 });
 
+// Search Bar
 const searchBar = document.getElementById("search-bar");
+const searchContainer = document.querySelector(".search-container");
 const buttonsToHide = document.querySelectorAll(
   ".nav-home .custom-select, .button-nav, .select-display"
 );
 
 searchBar.addEventListener("focus", function () {
+  // Ocultar elementos da navegação quando a barra de pesquisa recebe foco
   buttonsToHide.forEach((button) => {
-    button.classList.add("hidden-buttons");
+    button.classList.add("hidden");
   });
 });
 
 searchBar.addEventListener("blur", function () {
+  // Mostrar elementos da navegação quando a barra de pesquisa perde o foco
   buttonsToHide.forEach((button) => {
-    button.classList.remove("hidden-buttons");
+    button.classList.remove("hidden");
   });
 });
 
-// Carrossel de Discos
+// Primeiro Carrossel de Discos
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
   const nextButton = document.querySelector(".next");
@@ -90,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
   const slideGap = 22.5;
 
-  // Função para carregar os discos do MongoDB
   async function loadDisks() {
     try {
       const response = await fetch("http://localhost:5000/api/discos");
@@ -163,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Erro ao carregar discos:", error);
     }
   }
+
   function updateCarousel() {
     const slides = sliderContainer.querySelectorAll("li");
     const slideWidth =
@@ -171,17 +175,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const containerWidth = sliderContainer.parentElement.offsetWidth;
     const maxTranslateX = totalWidth - containerWidth;
 
-    sliderContainer.style.transform = `translateX(-${
-      currentIndex * slideWidth
-    }px)`;
-    if (currentIndex < 0) currentIndex = 0;
-    if (currentIndex * (slideWidth + slideGap) > maxTranslateX) {
-      currentIndex = Math.floor(maxTranslateX / (slideWidth + slideWidth));
-    }
+    console.log("Slide Width:", slideWidth);
+    console.log("Max Translate X:", maxTranslateX);
 
     sliderContainer.style.transform = `translateX(-${
       currentIndex * (slideWidth + slideGap)
     }px)`;
+
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex * (slideWidth + slideGap) > maxTranslateX) {
+      currentIndex = Math.floor(maxTranslateX / (slideWidth + slideGap));
+    }
 
     // Atualizar estado dos botões de navegação
     prevButton.disabled = currentIndex === 0;
@@ -193,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
       currentIndex * (slideWidth + slideGap) >= maxTranslateX ? "0.5" : "1";
   }
 
-  // Eventos de clique nos botões de navegação
   prevButton.addEventListener("click", function () {
     if (currentIndex > 0) {
       currentIndex--;
@@ -206,13 +209,257 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCarousel();
   });
 
-  // Recalcula a largura dos slides ao redimensionar a janela
   window.addEventListener("resize", function () {
     updateCarousel();
   });
 
-  // Carrega os discos ao iniciar
   loadDisks();
+
+  // Segundo Carrossel (Lancamentos)
+  const prevLancamentosButton = document.querySelector("#prev-lancamentos");
+  const nextLancamentosButton = document.querySelector("#next-lancamentos");
+  const lancamentosSliderContainer = document.querySelector(
+    "#slider-lancamentos"
+  );
+
+  let lancamentosIndex = 0;
+
+  async function loadLancamentos() {
+    try {
+      const response = await fetch("http://localhost:5000/api/lancamentos");
+      if (!response.ok) {
+        throw new Error("Erro ao carregar lançamentos");
+      }
+      const lancamentos = await response.json();
+
+      const lancamentoSlides = lancamentos
+        .map((lancamento) => {
+          return `
+            <li class="slide">
+              <div class="album-info">
+                <img src="${lancamento.imagem}" alt="${lancamento.albumTitle}" class="album-image">
+                <h3>${lancamento.titulo}</h3>
+                <span class="artist-name">${lancamento.artista}</span>
+                <p>${lancamento.ano}</p>
+                <p>${lancamento.genero}</p>
+                <p>${lancamento.tipo}</p>
+                <p>${lancamento.copias} copies from $${lancamento.preco}</p>
+              </div>
+              <div class="album-buttons">
+                <button class="shop-button">Shop</button>
+                <button class="want-button">Want</button>
+              </div>
+            </li>
+          `;
+        })
+        .join("");
+
+      lancamentosSliderContainer.innerHTML = lancamentoSlides;
+      updateLancamentosCarousel();
+
+      const shopButtons = document.querySelectorAll(".shop-button");
+      shopButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const discoInfo = {
+            imagem: event.target.closest("li").querySelector(".album-image")
+              .src,
+            titulo: event.target.closest("li").querySelector("h3").textContent,
+            artista: event.target.closest("li").querySelector(".artist-name")
+              .textContent,
+            ano: parseInt(
+              event.target.closest("li").querySelector("p:nth-of-type(1)")
+                .textContent
+            ),
+            genero: event.target.closest("li").querySelector("p:nth-of-type(2)")
+              .textContent,
+            tipo: event.target.closest("li").querySelector("p:nth-of-type(3)")
+              .textContent,
+          };
+
+          localStorage.setItem("discoInfo", JSON.stringify(discoInfo));
+          window.open("carrinho.html", "_blank");
+        });
+      });
+
+      const wantButtons = document.querySelectorAll(".want-button");
+      wantButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          window.location.href = "login.html";
+        });
+      });
+    } catch (error) {
+      console.error("Erro ao carregar lançamentos:", error);
+    }
+  }
+
+  function updateLancamentosCarousel() {
+    const slides = lancamentosSliderContainer.querySelectorAll("li");
+    const slideWidth =
+      slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
+    const totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
+    const containerWidth = lancamentosSliderContainer.parentElement.offsetWidth;
+    const maxTranslateX = totalWidth - containerWidth;
+
+    lancamentosSliderContainer.style.transform = `translateX(-${
+      lancamentosIndex * (slideWidth + slideGap)
+    }px)`;
+
+    if (lancamentosIndex < 0) lancamentosIndex = 0;
+    if (lancamentosIndex * (slideWidth + slideGap) > maxTranslateX) {
+      lancamentosIndex = Math.floor(maxTranslateX / (slideWidth + slideGap));
+    }
+
+    prevLancamentosButton.disabled = lancamentosIndex === 0;
+    nextLancamentosButton.disabled =
+      lancamentosIndex * (slideWidth + slideGap) >= maxTranslateX;
+
+    prevLancamentosButton.style.opacity = lancamentosIndex === 0 ? "0.5" : "1";
+    nextLancamentosButton.style.opacity =
+      lancamentosIndex * (slideWidth + slideGap) >= maxTranslateX ? "0.5" : "1";
+  }
+
+  prevLancamentosButton.addEventListener("click", function () {
+    if (lancamentosIndex > 0) {
+      lancamentosIndex--;
+      updateLancamentosCarousel();
+    }
+  });
+
+  nextLancamentosButton.addEventListener("click", function () {
+    lancamentosIndex++;
+    updateLancamentosCarousel();
+  });
+
+  window.addEventListener("resize", function () {
+    updateLancamentosCarousel();
+  });
+
+  loadLancamentos();
+});
+
+// Dots
+
+document.addEventListener("DOMContentLoaded", function () {
+  const prevButton = document.querySelector(".prev");
+  const nextButton = document.querySelector(".next");
+  const sliderContainer = document.querySelector("#slider-container");
+  const dots = document.querySelectorAll("#discos-indicators .dot");
+
+  const prevLancamentosButton = document.querySelector("#prev-lancamentos");
+  const nextLancamentosButton = document.querySelector("#next-lancamentos");
+  const lancamentosSliderContainer = document.querySelector(
+    "#slider-lancamentos"
+  );
+  const lancamentosDots = document.querySelectorAll(
+    "#lancamentos-indicators .dot"
+  );
+
+  let currentIndex = 0;
+  let lancamentosIndex = 0;
+  const slideGap = 22.5;
+
+  // Atualiza os indicadores de discos
+  function updateDiscosIndicators() {
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+
+  // Atualiza os indicadores de lançamentos
+  function updateLancamentosIndicators() {
+    lancamentosDots.forEach((dot, index) => {
+      if (index === lancamentosIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+
+  // Atualiza o carrossel de discos
+  function updateCarousel() {
+    const slides = sliderContainer.querySelectorAll("li");
+    const slideWidth =
+      slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
+    const totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
+    const containerWidth = sliderContainer.parentElement.offsetWidth;
+    const maxTranslateX = totalWidth - containerWidth;
+
+    sliderContainer.style.transform = `translateX(-${
+      currentIndex * (slideWidth + slideGap)
+    }px)`;
+
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled =
+      currentIndex * (slideWidth + slideGap) >= maxTranslateX;
+    prevButton.style.opacity = currentIndex === 0 ? "0.5" : "1";
+    nextButton.style.opacity =
+      currentIndex * (slideWidth + slideGap) >= maxTranslateX ? "0.5" : "1";
+
+    updateDiscosIndicators(); // Atualiza os pontos
+  }
+
+  // Atualiza o carrossel de lançamentos
+  function updateLancamentosCarousel() {
+    const slides = lancamentosSliderContainer.querySelectorAll("li");
+    const slideWidth =
+      slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
+    const totalWidth = (slideWidth + slideGap) * slides.length - slideGap;
+    const containerWidth = lancamentosSliderContainer.parentElement.offsetWidth;
+    const maxTranslateX = totalWidth - containerWidth;
+
+    lancamentosSliderContainer.style.transform = `translateX(-${
+      lancamentosIndex * (slideWidth + slideGap)
+    }px)`;
+
+    prevLancamentosButton.disabled = lancamentosIndex === 0;
+    nextLancamentosButton.disabled =
+      lancamentosIndex * (slideWidth + slideGap) >= maxTranslateX;
+    prevLancamentosButton.style.opacity = lancamentosIndex === 0 ? "0.5" : "1";
+    nextLancamentosButton.style.opacity =
+      lancamentosIndex * (slideWidth + slideGap) >= maxTranslateX ? "0.5" : "1";
+
+    updateLancamentosIndicators(); // Atualiza os pontos
+  }
+
+  // Eventos para os botões de navegação de discos
+  prevButton.addEventListener("click", function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  nextButton.addEventListener("click", function () {
+    currentIndex++;
+    updateCarousel();
+  });
+
+  // Eventos para os botões de navegação de lançamentos
+  prevLancamentosButton.addEventListener("click", function () {
+    if (lancamentosIndex > 0) {
+      lancamentosIndex--;
+      updateLancamentosCarousel();
+    }
+  });
+
+  nextLancamentosButton.addEventListener("click", function () {
+    lancamentosIndex++;
+    updateLancamentosCarousel();
+  });
+
+  // Função de atualização inicial (caso já tenha algo pré-carregado)
+  function initialSetup() {
+    updateCarousel();
+    updateLancamentosCarousel();
+  }
+
+  // Chama a função de setup inicial
+  initialSetup();
 });
 
 //API do Youtube para o vídeo
@@ -276,6 +523,8 @@ document.addEventListener("DOMContentLoaded", function () {
   loadPlaylist();
 });
 
+//Button-cadastro
+
 document.addEventListener("DOMContentLoaded", function () {
   const username = localStorage.getItem("username");
 
@@ -287,3 +536,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+//Swiper

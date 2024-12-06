@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static("public"));
 
 // Importando o modelo Disco
-const Disco = require("./models/Discos"); // Aponte para o arquivo correto
+const Disco = require("./models/Discos");
+
+// Importando o modelo Lancamento
+const Lancamento = require("./models/Lancamentos");
 
 // Conectar ao MongoDB
 mongoose
@@ -205,6 +208,157 @@ app.get("/api/discos/:id", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar disco" });
   }
 });
+
+app.post("/api/lancamentos", async (req, res) => {
+  const {
+    imagem, // Caminho da imagem do lançamento
+    titulo, // Título do lançamento
+    artista, // Nome do artista
+    ano, // Ano de lançamento
+    genero, // Gênero do lançamento
+    tipo, // Tipo de lançamento (LP, CD, etc.)
+    copias, // Número de cópias
+    descricao, // Descrição do lançamento
+    preco, // Preço do lançamento
+  } = req.body;
+
+  try {
+    const novoLancamento = new Lancamento({
+      imagem, // Apenas o caminho da imagem (não o arquivo em si)
+      titulo,
+      artista,
+      ano,
+      genero,
+      tipo,
+      copias,
+      descricao,
+      preco,
+    });
+
+    await novoLancamento.save(); // Salva o lançamento no banco de dados
+    res.status(201).json(novoLancamento); // Retorna o lançamento criado
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao adicionar o lançamento" }); // Retorna erro se falhar
+  }
+});
+
+// Rota para obter todos os lançamentos
+app.get("/api/lancamentos", async (req, res) => {
+  try {
+    const lancamentos = await Lancamento.find();
+    res.json(lancamentos);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao obter lançamentos" });
+  }
+});
+
+// Nova rota para criar um lançamento
+app.post("/api/adicionarLancamentos", async (req, res) => {
+  const lancamentos = [
+    {
+      imagem: "public/images/disco10.jpg",
+      titulo: "Gal Costa",
+      artista: "Gal Costa",
+      ano: 1969,
+      genero: "Psychedelic Rock, MPB, Avantgarde",
+      tipo: "Vinyl, LP, Album",
+      copias: 5,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$60.00",
+    },
+    {
+      imagem: "public/images/disco29.jpg",
+      titulo: "Get Yer Ya-Ya's Out! (The Rolling Stones In Concert)",
+      artista: "The Rolling Stones",
+      ano: 2024,
+      genero: "Rock, Blues Rock",
+      tipo: "Vinyl, LP, Album",
+      copias: 58,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$20.00",
+    },
+    {
+      imagem: "public/images/disco19.jpg",
+      titulo: "Os Mutantes",
+      artista: "Os Mutantes",
+      ano: 1968,
+      genero: "Psychedelic Rock, Rock, Experimental",
+      tipo: "Vinyl, LP, Album",
+      copias: 43,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$50.00",
+    },
+    {
+      imagem: "public/images/disco1.jpg",
+      titulo: "Talking Book",
+      artista: "Stevie Wonder",
+      ano: 1972,
+      genero: "Soul, Funk, Jazz",
+      tipo: "Vinyl, LP, Album",
+      copias: 30,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$45.00",
+    },
+    {
+      imagem: "public/images/disco2.jpg",
+      titulo: "Voulez-Vous",
+      artista: "ABBA",
+      ano: 1979,
+      genero: "Disco, Europop",
+      tipo: "Vinyl, LP, Album",
+      copias: 50,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$40.00",
+    },
+    {
+      imagem: "public/images/disco5.jpg",
+      titulo: "The Freewheelin' Bob Dylan",
+      artista: "Bob Dylan",
+      ano: 1963,
+      genero: "Blues, Folk",
+      tipo: "Vinyl, LP, Album",
+      copias: 25,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$42.00",
+    },
+    {
+      imagem: "public/images/disco28.jpg",
+      titulo: "Songs of a Lost World",
+      artista: "The Cure",
+      ano: 2024,
+      genero: "Alternative Rock",
+      tipo: "Vinyl, LP, Bioplastic",
+      copias: 109,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$32.90",
+    },
+    {
+      imagem: "public/images/disco9.jpg",
+      titulo: "Immunity",
+      artista: "Clairo",
+      ano: 2019,
+      genero: "Indie Pop, Bedroom Pop",
+      tipo: "Vinyl, LP, Album",
+      copias: 35,
+      descricao: "2 x Vinyl, LP, Album...",
+      preco: "$38.00",
+    },
+  ];
+
+  try {
+    for (const lancamento of lancamentos) {
+      console.log(`Tentando adicionar o lançamento: ${lancamento.titulo}`);
+      const novoLancamento = new Lancamento(lancamento);
+      await novoLancamento.save();
+      console.log(`Lançamento adicionado com sucesso: ${lancamento.titulo}`);
+    }
+    res.status(201).json({ message: "Lançamentos adicionados com sucesso!" });
+  } catch (error) {
+    console.error("Erro ao adicionar lançamentos:", error);
+    res.status(500).json({ error: "Erro ao adicionar lançamentos" });
+  }
+
+  });
 
 // Nova rota para a API do YouTube
 app.get("/api/youtube/playlist", async (req, res) => {
