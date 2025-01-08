@@ -1276,8 +1276,18 @@ h5 {
   background-color: black;
 }
 
+.swiper-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  gap: 20px;
+}
 
-.swiper-wrapper{
+.swiper-container {
   position: relative;
   width: 100%;
   max-width: 1280px;
@@ -1285,7 +1295,8 @@ h5 {
   overflow: hidden;
 }
 
-.swiper-button-next, .swiper-button-prev{
+.swiper-button-next,
+.swiper-button-prev {
   background-color: transparent;
   border: none;
   padding: 10px;
@@ -1294,4 +1305,30 @@ h5 {
   background-repeat: no-repeat;
   width: 25px;
   height: 25px;
+}
+
+.swiper-button-next {
+  background-image: url("/src/img/next.png");
+}
+
+.swiper-button-prev {
+  background-image: url("/src/img/next.png");
+  transform: scaleX(-1);
+}
+
+.swiper-slide {
+  width: 100%;
+  box-sizing: border-box;
+  object-fit: cover;
+  background-color: white;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent),
+    var(--tw-ring-shadow, 0 0 transparent), 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  height: 450px; /* Defina uma altura fixa para todos os discos */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px; /* Espaçamento entre os elementos dentro do slide */
 }

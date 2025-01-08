@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadLancamentos();
 });
 
-// Dots
+// Dots Pagination Discos e Lancamentos
 
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
@@ -462,6 +462,129 @@ document.addEventListener("DOMContentLoaded", function () {
   initialSetup();
 });
 
+//Button-cadastro
+
+document.addEventListener("DOMContentLoaded", function () {
+  const username = localStorage.getItem("username");
+
+  if (username) {
+    const cadastroButton = document.querySelector(".button-cadastro");
+
+    if (cadastroButton) {
+      cadastroButton.textContent = `${username}`;
+    }
+  }
+});
+
+import Swiper from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+document.addEventListener("DOMContentLoaded", function () {
+  const prevButtonBF = document.querySelector(".swiper-button-prev");
+  const nextButtonBF = document.querySelector(".swiper-button-next");
+  const swiperWrapper = document.querySelector(".swiper-wrapper");
+
+  async function loadBlackFridayDisks() {
+    try {
+      const response = await fetch("http://localhost:5000/api/blackfriday");
+      if (!response.ok) {
+        throw new Error("Erro ao carregar discos de Black Friday");
+      }
+      const discosBlackFriday = await response.json();
+
+      const slides = discosBlackFriday
+        .map((disco) => {
+          return `
+          <li class="swiper-slide">
+            <div class="album-info">
+              <img src="${disco.imagem}" alt="${disco.albumTitle}" class="album-image">
+              <h3>${disco.titulo}</h3>
+              <span class="artist-name">${disco.artista}</span>
+              <p>${disco.ano}</p>
+              <p>${disco.genero}</p>
+              <p>${disco.tipo}</p>
+              <p>${disco.copias} copies from $${disco.preco}</p>
+            </div>
+            <div class="album-buttons">
+              <button class="shop-button">Shop</button>
+              <button class="want-button">Want</button>
+            </div>
+          </li>
+        `;
+        })
+        .join("");
+
+      swiperWrapper.innerHTML = slides;
+
+      // Inicializando o Swiper após injetar os slides
+      const swiper = new Swiper(".swiper-container", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+
+      // Adicionando interações para os botões (Shop e Want)
+      const shopButtons = document.querySelectorAll(".shop-button");
+      console.log(shopButtons); // Verifique se os botões estão sendo selecionados
+      shopButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const discoInfo = {
+            imagem: event.target
+              .closest(".swiper-slide")
+              .querySelector(".album-image").src,
+            titulo: event.target.closest(".swiper-slide").querySelector("h3")
+              .textContent,
+            artista: event.target
+              .closest(".swiper-slide")
+              .querySelector(".artist-name").textContent,
+            ano: event.target
+              .closest(".swiper-slide")
+              .querySelector("p:nth-of-type(1)").textContent,
+            genero: event.target
+              .closest(".swiper-slide")
+              .querySelector("p:nth-of-type(2)").textContent,
+            tipo: event.target
+              .closest(".swiper-slide")
+              .querySelector("p:nth-of-type(3)").textContent,
+          };
+
+          localStorage.setItem("discoInfo", JSON.stringify(discoInfo));
+          window.open("carrinho.html", "_blank");
+        });
+      });
+
+      const wantButtons = document.querySelectorAll(".want-button");
+      console.log(wantButtons); // Verifique se os botões estão sendo selecionados
+      wantButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          window.location.href = "login.html";
+        });
+      });
+    } catch (error) {
+      console.error("Erro ao carregar discos de Black Friday:", error);
+    }
+  }
+
+  loadBlackFridayDisks();
+});
+
 //API do Youtube para o vídeo
 document.addEventListener("DOMContentLoaded", function () {
   const playlistId = "PLsAZ9VYSyO13Wp5GD8wM5OYtfMV0sck46";
@@ -522,19 +645,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadPlaylist();
 });
-
-//Button-cadastro
-
-document.addEventListener("DOMContentLoaded", function () {
-  const username = localStorage.getItem("username");
-
-  if (username) {
-    const cadastroButton = document.querySelector(".button-cadastro");
-
-    if (cadastroButton) {
-      cadastroButton.textContent = `${username}`;
-    }
-  }
-});
-
-//Swiper

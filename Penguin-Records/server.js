@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const authRoutes = require("./routes/auth"); // Importar as rotas de autenticação
-const axios = require("axios"); // Importa o axios
+const authRoutes = require("./routes/auth");
+const axios = require("axios");
 require("dotenv").config();
 
 const app = express();
@@ -17,6 +17,9 @@ const Disco = require("./models/Discos");
 
 // Importando o modelo Lancamento
 const Lancamento = require("./models/Lancamentos");
+
+// Importando o modelo BlackFriday
+const BlackFriday = require("./models/BlackFriday");
 
 // Conectar ao MongoDB
 mongoose
@@ -359,6 +362,145 @@ app.post("/api/adicionarLancamentos", async (req, res) => {
   }
 
   });
+
+app.post("/api/adicionarBlackFriday", async (req, res) => {
+  const blackFridayDiscos = [
+    {
+      imagem: "public/images/disco30.jpg",
+      titulo: "From Zero",
+      artista: "Linkin Park",
+      ano: 2024,
+      genero: "Rock, Alternative Rock",
+      tipo: "Vinyl, LP, Album",
+      copias: 124,
+      descricao: "124 copies from $27.37",
+      preco: "$27.37",
+    },
+    {
+      imagem: "public/images/disco34.jpg",
+      titulo: "Alligator Bites Never Heal",
+      artista: "Doechii",
+      ano: 2024,
+      genero: "Hip Hop, Funk/Soul",
+      tipo: "Vinyl, LP, Mixtape",
+      copias: 4,
+      descricao: "4 copies from $79.99",
+      preco: "$79.99",
+    },
+    {
+      imagem: "public/images/disco35.jpg",
+      titulo: "Purple Rarities",
+      artista: "Stone Temple Pilots",
+      ano: 2024,
+      genero: "Rock",
+      tipo: "Vinyl, LP, Record Store Day",
+      copias: 2,
+      descricao: "2 copies from $199.99",
+      preco: "$199.99",
+    },
+    {
+      imagem: "public/images/disco33.jpg",
+      titulo: "Operation: Doomsday",
+      artista: "MF Doom",
+      ano: 2024,
+      genero: "Hip Hop",
+      tipo: "2 x Vinyl LP, Record Store Day",
+      copias: 27,
+      descricao: "27 copies from $39.98",
+      preco: "$39.98",
+    },
+    {
+      imagem: "public/images/disco32.jpg",
+      titulo: "Dawg '90 Deluxe Edition",
+      artista: "David Grisman",
+      ano: 2024,
+      genero: "Jazz, Folk, Bluegrass",
+      tipo: "2 x Vinyl, LP, Album, Record Store Day",
+      copias: 7,
+      descricao: "7 copies from $41.29",
+      preco: "$41.29",
+    },
+    {
+      imagem: "public/images/disco36.jpg",
+      titulo: "Absolute Elsewhere",
+      artista: "Blood Incantation",
+      ano: 2024,
+      genero: "Electronic, Rock, Death Metal",
+      tipo: "Vinyl, LP, Limited Edition",
+      copias: 26,
+      descricao: "26 copies from $29.46",
+      preco: "$29.46",
+    },
+    {
+      imagem: "public/images/disco37.jpg",
+      titulo: "The SpongeBob SquarePants Movie",
+      artista: "Various",
+      ano: 2024,
+      genero: "Electronic, Rock, Soundtrack",
+      tipo: "Vinyl, LP, Record Store Day",
+      copias: 42,
+      descricao: "42 copies from $22.00",
+      preco: "$22.00",
+    },
+    {
+      imagem: "public/images/disco38.jpg",
+      titulo: "I Want To Hold Your Hand / I Saw Her Standing There",
+      artista: "The Beatles",
+      ano: 2024,
+      genero: "Rock, Rock & Roll",
+      tipo: 'Vinyl, "7", 45 RPM, Record Store Day',
+      copias: 180,
+      descricao: "180 copies from $14.74",
+      preco: "$14.74",
+    },
+    {
+      imagem: "public/images/disco39.jpg",
+      titulo: "I Lay Down My Life For You",
+      artista: "JPEGMAFIA",
+      ano: 2024,
+      genero: "Hip Hop, Rock, Experimental",
+      tipo: "2 x Vinyl, LP",
+      copias: 5,
+      descricao: "5 copies from $80.00",
+      preco: "$80.00",
+    },
+  ];
+
+  try {
+    for (const disco of blackFridayDiscos) {
+      const novoDisco = new BlackFriday(disco);
+      await novoDisco.save();
+    }
+    res
+      .status(201)
+      .json({ message: "Discos de Black Friday adicionados com sucesso!" });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao adicionar discos de Black Friday" });
+  }
+});
+
+// Rota para criar um disco de Black Friday
+app.post("/api/blackfriday", async (req, res) => {
+  try {
+    const novoDisco = new BlackFriday(req.body);
+    await novoDisco.save();
+    res.status(201).json(novoDisco);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Erro ao adicionar o disco de Black Friday" });
+  }
+});
+
+// Rota para obter todos os discos de Black Friday
+app.get("/api/blackfriday", async (req, res) => {
+  try {
+    const blackFridayDiscos = await BlackFriday.find();
+    res.json(blackFridayDiscos);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao obter discos de Black Friday" });
+  }
+});
 
 // Nova rota para a API do YouTube
 app.get("/api/youtube/playlist", async (req, res) => {
