@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const axios = require("axios");
+const dbURI = process.env.MONGODB_URI;
 require("dotenv").config();
 
 const app = express();
@@ -22,13 +23,24 @@ const Lancamento = require("./models/Lancamentos");
 const BlackFriday = require("./models/BlackFriday");
 
 // Conectar ao MongoDB
-mongoose
-  .connect(process.env.MONGO_URI, {
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
+console.log("MONGODB_URI:", dbURI); // Verifique o que está impresso no log
+
+if (!dbURI) {
+  console.error("MongoDB URI não está definida.");
+  process.exit(1); // Encerra a aplicação se a variável não estiver definida
+}
+
+mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Conectado ao MongoDB"))
-  .catch((err) => console.log(err));
+  .then(() => {
+    console.log("Conectado ao MongoDB com sucesso!");
+  })
+  .catch((err) => {
+    console.error("Erro ao conectar ao MongoDB:", err);
+  });
 
 // Middleware
 app.use(cors()); // Habilitar CORS
@@ -360,8 +372,7 @@ app.post("/api/adicionarLancamentos", async (req, res) => {
     console.error("Erro ao adicionar lançamentos:", error);
     res.status(500).json({ error: "Erro ao adicionar lançamentos" });
   }
-
-  });
+});
 
 app.post("/api/adicionarBlackFriday", async (req, res) => {
   const blackFridayDiscos = [
